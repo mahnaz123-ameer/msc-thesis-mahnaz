@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #0f172a;
+    color: #e2e8f0;
+    margin: 0;
+  }
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: #1e293b; }
+  ::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply bg-card hover:bg-slate-700 text-slate-200 font-medium py-2 px-4 rounded-lg transition-colors text-sm border border-border;
+  }
+  .input {
+    @apply bg-surface border border-border rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-primary w-full;
+  }
+  .select {
+    @apply bg-surface border border-border rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-primary w-full;
+  }
+  .card {
+    @apply bg-card border border-border rounded-xl p-4;
+  }
+  .badge-green { @apply text-xs bg-green-900/40 text-green-400 border border-green-800/50 px-2 py-0.5 rounded-full; }
+  .badge-red   { @apply text-xs bg-red-900/40 text-red-400 border border-red-800/50 px-2 py-0.5 rounded-full; }
+  .badge-blue  { @apply text-xs bg-blue-900/40 text-blue-400 border border-blue-800/50 px-2 py-0.5 rounded-full; }
+  .badge-yellow{ @apply text-xs bg-yellow-900/40 text-yellow-400 border border-yellow-800/50 px-2 py-0.5 rounded-full; }
+}
+
+/* AST tree styles */
+.ast-tree ul { padding-left: 18px; border-left: 1px solid #334155; margin-left: 6px; }
+.ast-tree li { list-style: none; padding: 2px 0; }
+.ast-node { display: inline-flex; align-items: center; gap: 4px; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-family: 'JetBrains Mono', monospace; border-width: 1px; border-style: solid; cursor: pointer; transition: opacity .15s; }
+.ast-node:hover { opacity: 0.75; }
