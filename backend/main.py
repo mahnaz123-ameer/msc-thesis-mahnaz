@@ -23,6 +23,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from type_hints import param_hints
+from test_examples import apply_test_examples
+from describe import describe
+from sample_files import ensure_sample_files, apply_sample_paths, web_path_example
+import tempfile
 
 # ─── App Setup ───────────────────────────────────────────────
 app = FastAPI(
@@ -37,6 +41,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+ensure_sample_files()
 
 # ─── Path to research projects ───────────────────────────────
 BASE_DIR = Path(__file__).parent.parent / "research_projects"
@@ -174,8 +180,25 @@ def _runnable(node, cls: Optional[str], params: List[Dict]) -> (bool, str):
     return True, ""
 
 
+_CHECK_FILE = Path(__file__).parent / "function_check.json"
+_check_cache = {"mtime": None, "data": {}}
+
+
+def function_check(project: str, filename: str, name: str) -> Optional[Dict]:
+    """Result of check_functions.py for this function (None if never checked)."""
+    try:
+        mtime = _CHECK_FILE.stat().st_mtime
+    except OSError:
+        return None
+    if _check_cache["mtime"] != mtime:
+        _check_cache["data"] = json.loads(_CHECK_FILE.read_text()).get("results", {})
+        _check_cache["mtime"] = mtime
+    return _check_cache["data"].get(project, {}).get(f"{filename}::{name}")
+
+
 # ─── Helper: Extract functions from a file ───────────────────
 def get_functions_from_file(project: str, filename: str) -> List[Dict]:
+    meta = get_project(project)
     source = resolve_file(project, filename).read_text()
     tree = ast.parse(source)
     module_funcs = {n.name: n for n in tree.body if isinstance(n, FUNC_TYPES)}
@@ -185,6 +208,13 @@ def get_functions_from_file(project: str, filename: str) -> List[Dict]:
         if cls and args and args[0] in ("self", "cls"):
             args = args[1:]
         params = param_hints(node, skip_first=bool(cls), module_funcs=module_funcs)
+        example_from = None
+        if meta["kind"] == "library":
+            # best example inputs: real calls from the library's own tests
+            example_from = apply_test_examples(BASE_DIR / project, meta["packages"],
+                                               _module_name(filename), qualname, params)
+            apply_sample_paths(project, params, ast.get_docstring(node) or "")
+            web_path_example(project, params)
         runnable, reason = _runnable(node, cls, params)
         functions.append({
             "name": qualname,
@@ -196,6 +226,11 @@ def get_functions_from_file(project: str, filename: str) -> List[Dict]:
             "params": params,
             "runnable": runnable,
             "reason": reason,
+            "example_from": example_from,
+            # did it run with the pre-filled values? (from check_functions.py)
+            "about": describe(node, f"{project}::{filename}::{qualname}", ast.get_docstring(node) or ""),
+            "works": (function_check(project, filename, qualname) or {}).get("ok"),
+            "check_error": (function_check(project, filename, qualname) or {}).get("error"),
         })
     return functions
 
@@ -368,7 +403,7 @@ def _module_name(filename: str) -> str:
 def run_function(project: str, filename: str, function_name: str, body: RunRequest):
     """Run a function with provided arguments."""
     meta = get_project(project)
-    parsed_args = _parse_args(body.args)
+    parsed_args = list(body.args)   # the page sends real JSON values; text stays text
 
     if meta["kind"] == "library":
         resolve_file(project, filename)
@@ -383,6 +418,7 @@ def run_function(project: str, filename: str, function_name: str, body: RunReque
                     "stub_modules": meta.get("stub_modules", {}),
                 }),
                 capture_output=True, text=True, timeout=15,
+                cwd=tempfile.gettempdir(),   # files a function writes never land in the project
             )
         except subprocess.TimeoutExpired:
             return {"success": False, "error": "Timed out after 15s", "type": "TimeoutError"}
@@ -681,3 +717,8 @@ def get_stats():
         "total_functions": total_functions,
         "projects": projects_data,
     }
+
+
+# ─── Stage 1: AI test generation ─────────────────────────────
+from stage1 import router as stage1_router  # noqa: E402  (imported last: stage1 uses this module)
+app.include_router(stage1_router)

@@ -1,0 +1,4512 @@
+{
+"generated": "2026-11-22 00:15",
+"results": {
+"01_university_management": {
+"attendance.py::mark_present": {
+"ok": true
+},
+"attendance.py::mark_absent": {
+"ok": true
+},
+"attendance.py::mark_late": {
+"ok": true
+},
+"attendance.py::calculate_attendance_percentage": {
+"ok": true
+},
+"attendance.py::is_eligible_for_exam": {
+"ok": true
+},
+"attendance.py::get_absent_dates": {
+"ok": true
+},
+"attendance.py::get_present_count": {
+"ok": true
+},
+"attendance.py::get_total_classes": {
+"ok": true
+},
+"attendance.py::get_absent_students_on_date": {
+"ok": true
+},
+"attendance.py::calculate_shortage": {
+"ok": true
+},
+"attendance.py::get_students_below_threshold": {
+"ok": true
+},
+"attendance.py::get_overall_attendance": {
+"ok": true
+},
+"attendance.py::get_course_attendance_summary": {
+"ok": true
+},
+"attendance.py::has_consecutive_absences": {
+"ok": true
+},
+"courses.py::add_course": {
+"ok": true
+},
+"courses.py::remove_course": {
+"ok": true
+},
+"courses.py::register_student_for_course": {
+"ok": true
+},
+"courses.py::drop_course": {
+"ok": true
+},
+"courses.py::get_enrolled_students": {
+"ok": true
+},
+"courses.py::get_student_courses": {
+"ok": true
+},
+"courses.py::count_enrolled": {
+"ok": true
+},
+"courses.py::is_course_full": {
+"ok": true
+},
+"courses.py::get_available_seats": {
+"ok": true
+},
+"courses.py::calculate_total_credit_hours": {
+"ok": true
+},
+"courses.py::is_credit_limit_exceeded": {
+"ok": true
+},
+"courses.py::is_credit_minimum_met": {
+"ok": true
+},
+"courses.py::has_time_conflict": {
+"ok": true
+},
+"courses.py::get_course_credits": {
+"ok": true
+},
+"courses.py::deactivate_course": {
+"ok": true
+},
+"courses.py::get_active_courses": {
+"ok": true
+},
+"courses.py::get_courses_with_seats": {
+"ok": true
+},
+"courses.py::calculate_course_fill_rate": {
+"ok": true
+},
+"examination.py::schedule_exam": {
+"ok": true
+},
+"examination.py::cancel_exam": {
+"ok": true
+},
+"examination.py::record_result": {
+"ok": true
+},
+"examination.py::get_student_result": {
+"ok": true
+},
+"examination.py::get_exam_results": {
+"ok": true
+},
+"examination.py::calculate_exam_average": {
+"ok": true
+},
+"examination.py::get_exam_highest": {
+"ok": true
+},
+"examination.py::get_exam_lowest": {
+"ok": true
+},
+"examination.py::get_failed_students": {
+"ok": false,
+"error": "AttributeError: 'list' object has no attribute 'items'"
+},
+"examination.py::get_passed_students": {
+"ok": false,
+"error": "AttributeError: 'list' object has no attribute 'items'"
+},
+"examination.py::calculate_pass_rate": {
+"ok": true
+},
+"examination.py::is_eligible_for_retake": {
+"ok": true
+},
+"examination.py::calculate_retake_fee": {
+"ok": true
+},
+"examination.py::has_room_conflict": {
+"ok": true
+},
+"examination.py::get_exams_by_course": {
+"ok": true
+},
+"examination.py::get_student_exam_history": {
+"ok": true
+},
+"examination.py::get_top_performers": {
+"ok": true
+},
+"fees.py::calculate_tuition_fee": {
+"ok": true
+},
+"fees.py::apply_scholarship": {
+"ok": true
+},
+"fees.py::calculate_merit_scholarship_percent": {
+"ok": true
+},
+"fees.py::calculate_late_fine": {
+"ok": true
+},
+"fees.py::calculate_total_payable": {
+"ok": true
+},
+"fees.py::record_payment": {
+"ok": true
+},
+"fees.py::get_outstanding_fee": {
+"ok": true
+},
+"fees.py::is_fee_cleared": {
+"ok": true
+},
+"fees.py::calculate_hostel_fee": {
+"ok": true
+},
+"fees.py::calculate_meal_charges": {
+"ok": true
+},
+"fees.py::calculate_library_fine": {
+"ok": true
+},
+"fees.py::is_eligible_for_exam_on_fees": {
+"ok": true
+},
+"fees.py::calculate_refund": {
+"ok": true
+},
+"fees.py::get_total_collected": {
+"ok": true
+},
+"fees.py::get_defaulters": {
+"ok": true
+},
+"grades.py::assign_letter_grade": {
+"ok": true
+},
+"grades.py::assign_grade_point": {
+"ok": true
+},
+"grades.py::is_passing": {
+"ok": true
+},
+"grades.py::is_failing": {
+"ok": true
+},
+"grades.py::calculate_sgpa": {
+"ok": true
+},
+"grades.py::calculate_cgpa": {
+"ok": true
+},
+"grades.py::calculate_class_average": {
+"ok": true
+},
+"grades.py::get_highest_marks": {
+"ok": true
+},
+"grades.py::get_lowest_marks": {
+"ok": true
+},
+"grades.py::count_failed_students": {
+"ok": true
+},
+"grades.py::count_passed_students": {
+"ok": true
+},
+"grades.py::calculate_pass_rate": {
+"ok": true
+},
+"grades.py::get_grade_distribution": {
+"ok": true
+},
+"grades.py::calculate_rank": {
+"ok": true
+},
+"grades.py::is_first_class": {
+"ok": true
+},
+"grades.py::is_second_class": {
+"ok": true
+},
+"grades.py::is_eligible_for_scholarship": {
+"ok": true
+},
+"grades.py::is_on_probation": {
+"ok": true
+},
+"grades.py::calculate_marks_needed_to_pass": {
+"ok": true
+},
+"grades.py::is_eligible_for_retake": {
+"ok": true
+},
+"grades.py::calculate_weighted_average": {
+"ok": true
+},
+"library.py::add_book": {
+"ok": true
+},
+"library.py::remove_book": {
+"ok": true
+},
+"library.py::borrow_book": {
+"ok": true
+},
+"library.py::return_book": {
+"ok": true
+},
+"library.py::calculate_fine": {
+"ok": true
+},
+"library.py::get_available_copies": {
+"ok": true
+},
+"library.py::is_book_available": {
+"ok": true
+},
+"library.py::get_borrowed_books": {
+"ok": true
+},
+"library.py::get_borrow_count": {
+"ok": true
+},
+"library.py::has_exceeded_borrow_limit": {
+"ok": true
+},
+"library.py::search_by_title": {
+"ok": true
+},
+"library.py::search_by_author": {
+"ok": true
+},
+"library.py::search_by_category": {
+"ok": true
+},
+"library.py::get_total_books": {
+"ok": true
+},
+"library.py::get_total_copies": {
+"ok": true
+},
+"library.py::get_total_borrowed": {
+"ok": true
+},
+"library.py::add_copies": {
+"ok": true
+},
+"library.py::get_most_borrowed_books": {
+"ok": true
+},
+"staff.py::add_staff": {
+"ok": true
+},
+"staff.py::remove_staff": {
+"ok": true
+},
+"staff.py::calculate_gross_salary": {
+"ok": true
+},
+"staff.py::calculate_income_tax": {
+"ok": true
+},
+"staff.py::calculate_provident_fund": {
+"ok": true
+},
+"staff.py::calculate_net_salary": {
+"ok": true
+},
+"staff.py::calculate_overtime_pay": {
+"ok": true
+},
+"staff.py::calculate_annual_bonus": {
+"ok": true
+},
+"staff.py::calculate_workload": {
+"ok": true
+},
+"staff.py::is_overloaded": {
+"ok": true
+},
+"staff.py::is_underloaded": {
+"ok": true
+},
+"staff.py::calculate_performance_score": {
+"ok": true
+},
+"staff.py::get_performance_grade": {
+"ok": true
+},
+"staff.py::calculate_leave_balance": {
+"ok": true
+},
+"staff.py::is_leave_eligible": {
+"ok": true
+},
+"staff.py::get_department_payroll": {
+"ok": true
+},
+"staff.py::get_staff_by_department": {
+"ok": true
+},
+"student.py::add_student": {
+"ok": true
+},
+"student.py::remove_student": {
+"ok": true
+},
+"student.py::deactivate_student": {
+"ok": true
+},
+"student.py::reactivate_student": {
+"ok": true
+},
+"student.py::update_student_email": {
+"ok": true
+},
+"student.py::update_student_year": {
+"ok": true
+},
+"student.py::search_student_by_id": {
+"ok": true
+},
+"student.py::search_students_by_name": {
+"ok": true
+},
+"student.py::search_students_by_program": {
+"ok": true
+},
+"student.py::get_active_students": {
+"ok": true
+},
+"student.py::get_inactive_students": {
+"ok": true
+},
+"student.py::get_students_by_year": {
+"ok": true
+},
+"student.py::get_total_students": {
+"ok": true
+},
+"student.py::get_total_active_students": {
+"ok": true
+},
+"student.py::is_student_registered": {
+"ok": true
+},
+"student.py::is_student_active": {
+"ok": true
+},
+"student.py::update_cgpa": {
+"ok": true
+},
+"student.py::get_top_students": {
+"ok": false,
+"error": "KeyError: 'cgpa'"
+},
+"student.py::transfer_student_program": {
+"ok": true
+}
+},
+"02_banking_system": {
+"account.py::create_account": {
+"ok": true
+},
+"account.py::close_account": {
+"ok": true
+},
+"account.py::freeze_account": {
+"ok": true
+},
+"account.py::unfreeze_account": {
+"ok": true
+},
+"account.py::get_balance": {
+"ok": true
+},
+"account.py::deposit": {
+"ok": true
+},
+"account.py::withdraw": {
+"ok": true
+},
+"account.py::transfer": {
+"ok": true
+},
+"account.py::check_minimum_balance": {
+"ok": true
+},
+"account.py::is_account_active": {
+"ok": true
+},
+"account.py::is_account_frozen": {
+"ok": true
+},
+"account.py::get_transaction_count": {
+"ok": true
+},
+"account.py::get_account_type": {
+"ok": true
+},
+"account.py::get_all_active_accounts": {
+"ok": true
+},
+"account.py::calculate_total_deposits": {
+"ok": true
+},
+"cards.py::issue_card": {
+"ok": true
+},
+"cards.py::block_card": {
+"ok": true
+},
+"cards.py::unblock_card": {
+"ok": true
+},
+"cards.py::validate_card": {
+"ok": true
+},
+"cards.py::get_available_credit": {
+"ok": true
+},
+"cards.py::make_credit_card_payment": {
+"ok": true
+},
+"cards.py::charge_to_credit_card": {
+"ok": true
+},
+"cards.py::calculate_credit_utilization": {
+"ok": true
+},
+"cards.py::add_reward_points": {
+"ok": true
+},
+"cards.py::redeem_reward_points": {
+"ok": true
+},
+"cards.py::calculate_minimum_payment": {
+"ok": true
+},
+"cards.py::calculate_late_payment_fee": {
+"ok": true
+},
+"cards.py::calculate_cash_advance_fee": {
+"ok": true
+},
+"cards.py::upgrade_credit_limit": {
+"ok": true
+},
+"fraud.py::check_transaction_velocity": {
+"ok": true
+},
+"fraud.py::is_amount_anomalous": {
+"ok": true
+},
+"fraud.py::check_location_mismatch": {
+"ok": true
+},
+"fraud.py::calculate_risk_score": {
+"ok": true
+},
+"fraud.py::should_block_transaction": {
+"ok": true
+},
+"fraud.py::flag_account": {
+"ok": true
+},
+"fraud.py::unflag_account": {
+"ok": true
+},
+"fraud.py::is_account_flagged": {
+"ok": true
+},
+"fraud.py::lock_account_after_failed_attempts": {
+"ok": true
+},
+"fraud.py::validate_pin": {
+"ok": true
+},
+"fraud.py::is_pin_format_valid": {
+"ok": true
+},
+"fraud.py::detect_round_number_pattern": {
+"ok": true
+},
+"fraud.py::check_new_beneficiary_risk": {
+"ok": true
+},
+"fraud.py::calculate_fraud_probability": {
+"ok": true
+},
+"fraud.py::generate_fraud_alert": {
+"ok": true
+},
+"interest.py::calculate_savings_interest": {
+"ok": true
+},
+"interest.py::calculate_fixed_deposit_maturity": {
+"ok": true
+},
+"interest.py::calculate_fd_interest_earned": {
+"ok": true
+},
+"interest.py::get_fd_rate_by_tenure": {
+"ok": true
+},
+"interest.py::calculate_recurring_deposit_maturity": {
+"ok": true
+},
+"interest.py::calculate_effective_annual_rate": {
+"ok": true
+},
+"interest.py::calculate_real_interest_rate": {
+"ok": true
+},
+"interest.py::calculate_tax_on_interest": {
+"ok": true
+},
+"interest.py::calculate_net_interest": {
+"ok": true
+},
+"interest.py::calculate_break_even_months": {
+"ok": true
+},
+"interest.py::compare_fd_plans": {
+"ok": true
+},
+"interest.py::calculate_penalty_for_early_fd_withdrawal": {
+"ok": true
+},
+"loans.py::check_loan_eligibility": {
+"ok": true
+},
+"loans.py::calculate_max_loan_amount": {
+"ok": true
+},
+"loans.py::calculate_simple_interest": {
+"ok": true
+},
+"loans.py::calculate_compound_interest": {
+"ok": true
+},
+"loans.py::calculate_emi": {
+"ok": true
+},
+"loans.py::calculate_total_repayment": {
+"ok": true
+},
+"loans.py::calculate_total_interest_paid": {
+"ok": true
+},
+"loans.py::process_repayment": {
+"ok": true
+},
+"loans.py::calculate_outstanding_balance": {
+"ok": true
+},
+"loans.py::calculate_prepayment_penalty": {
+"ok": true
+},
+"loans.py::calculate_late_payment_penalty": {
+"ok": true
+},
+"loans.py::is_loan_overdue": {
+"ok": true
+},
+"loans.py::get_loan_summary": {
+"ok": true
+},
+"loans.py::calculate_loan_to_value_ratio": {
+"ok": true
+},
+"loans.py::is_ltv_acceptable": {
+"ok": true
+},
+"mobile_banking.py::send_money": {
+"ok": true
+},
+"mobile_banking.py::calculate_send_money_fee": {
+"ok": true
+},
+"mobile_banking.py::cash_in": {
+"ok": true
+},
+"mobile_banking.py::cash_out": {
+"ok": true
+},
+"mobile_banking.py::calculate_cash_out_fee": {
+"ok": true
+},
+"mobile_banking.py::pay_bill": {
+"ok": true
+},
+"mobile_banking.py::mobile_recharge": {
+"ok": true
+},
+"mobile_banking.py::get_wallet_balance": {
+"ok": true
+},
+"mobile_banking.py::check_daily_send_limit": {
+"ok": true
+},
+"mobile_banking.py::check_monthly_transaction_limit": {
+"ok": true
+},
+"mobile_banking.py::calculate_payment_convenience_fee": {
+"ok": true
+},
+"mobile_banking.py::transfer_to_bank": {
+"ok": true
+},
+"mobile_banking.py::request_money": {
+"ok": true
+},
+"transactions.py::add_transaction": {
+"ok": true
+},
+"transactions.py::get_transaction_history": {
+"ok": true
+},
+"transactions.py::get_last_n_transactions": {
+"ok": true
+},
+"transactions.py::calculate_total_credits": {
+"ok": true
+},
+"transactions.py::calculate_total_debits": {
+"ok": true
+},
+"transactions.py::get_largest_transaction": {
+"ok": true
+},
+"transactions.py::get_transactions_by_type": {
+"ok": true
+},
+"transactions.py::get_transaction_count": {
+"ok": true
+},
+"transactions.py::calculate_average_transaction": {
+"ok": true
+},
+"transactions.py::check_daily_limit": {
+"ok": true
+},
+"transactions.py::is_suspicious_transaction": {
+"ok": true
+},
+"transactions.py::calculate_monthly_spending": {
+"ok": true
+},
+"transactions.py::reverse_transaction": {
+"ok": true
+},
+"transactions.py::generate_statement_summary": {
+"ok": true
+}
+},
+"03_hospital_management": {
+"appointment.py::book_appointment": {
+"ok": true
+},
+"appointment.py::cancel_appointment": {
+"ok": true
+},
+"appointment.py::reschedule_appointment": {
+"ok": true
+},
+"appointment.py::complete_appointment": {
+"ok": true
+},
+"appointment.py::check_doctor_conflict": {
+"ok": true
+},
+"appointment.py::get_doctor_appointments": {
+"ok": true
+},
+"appointment.py::get_patient_appointments": {
+"ok": true
+},
+"appointment.py::get_appointments_by_status": {
+"ok": true
+},
+"appointment.py::get_available_slots": {
+"ok": true
+},
+"appointment.py::count_appointments_by_doctor": {
+"ok": true
+},
+"appointment.py::count_no_shows": {
+"ok": true
+},
+"appointment.py::calculate_doctor_utilization": {
+"ok": true
+},
+"appointment.py::mark_no_show": {
+"ok": true
+},
+"appointment.py::add_appointment_notes": {
+"ok": true
+},
+"appointment.py::get_upcoming_appointments": {
+"ok": true
+},
+"appointment.py::get_todays_appointments": {
+"ok": true
+},
+"billing.py::calculate_consultation_fee": {
+"ok": true
+},
+"billing.py::calculate_bed_charge": {
+"ok": true
+},
+"billing.py::calculate_medicine_bill": {
+"ok": true
+},
+"billing.py::calculate_lab_test_fee": {
+"ok": true
+},
+"billing.py::calculate_surgery_fee": {
+"ok": true
+},
+"billing.py::apply_insurance": {
+"ok": true
+},
+"billing.py::calculate_total_bill": {
+"ok": true
+},
+"billing.py::apply_discount": {
+"ok": true
+},
+"billing.py::calculate_vat": {
+"ok": true
+},
+"billing.py::calculate_outstanding_payment": {
+"ok": true
+},
+"billing.py::calculate_refund": {
+"ok": true
+},
+"billing.py::is_insurance_valid": {
+"ok": true
+},
+"billing.py::calculate_co_payment": {
+"ok": true
+},
+"billing.py::generate_bill_summary": {
+"ok": true
+},
+"billing.py::calculate_package_discount": {
+"ok": true
+},
+"doctor.py::add_doctor": {
+"ok": true
+},
+"doctor.py::remove_doctor": {
+"ok": true
+},
+"doctor.py::update_consultation_fee": {
+"ok": true
+},
+"doctor.py::add_rating": {
+"ok": true
+},
+"doctor.py::get_average_rating": {
+"ok": true
+},
+"doctor.py::get_doctors_by_specialization": {
+"ok": true
+},
+"doctor.py::get_top_rated_doctors": {
+"ok": true
+},
+"doctor.py::calculate_doctor_revenue": {
+"ok": true
+},
+"doctor.py::increment_patients_seen": {
+"ok": true
+},
+"doctor.py::deactivate_doctor": {
+"ok": true
+},
+"doctor.py::reactivate_doctor": {
+"ok": true
+},
+"doctor.py::is_doctor_active": {
+"ok": true
+},
+"doctor.py::get_all_active_doctors": {
+"ok": true
+},
+"doctor.py::calculate_experience_level": {
+"ok": true
+},
+"doctor.py::search_doctor_by_name": {
+"ok": true
+},
+"doctor.py::get_doctor_profile": {
+"ok": false,
+"error": "KeyError: 'experience_years'"
+},
+"doctor.py::calculate_department_revenue": {
+"ok": false,
+"error": "KeyError: 'consultation_fee'"
+},
+"lab.py::book_lab_test": {
+"ok": true
+},
+"lab.py::record_test_result": {
+"ok": true
+},
+"lab.py::check_normal_range": {
+"ok": true
+},
+"lab.py::mark_order_complete": {
+"ok": true
+},
+"lab.py::get_abnormal_results": {
+"ok": true
+},
+"lab.py::has_critical_results": {
+"ok": true
+},
+"lab.py::get_pending_orders": {
+"ok": true
+},
+"lab.py::get_patient_lab_history": {
+"ok": true
+},
+"lab.py::calculate_lab_bill": {
+"ok": true
+},
+"lab.py::get_test_result": {
+"ok": true
+},
+"lab.py::calculate_result_deviation": {
+"ok": true
+},
+"lab.py::get_all_results_summary": {
+"ok": true
+},
+"lab.py::cancel_lab_order": {
+"ok": true
+},
+"lab.py::get_lab_orders_by_doctor": {
+"ok": true
+},
+"medicine.py::add_medicine": {
+"ok": true
+},
+"medicine.py::update_stock": {
+"ok": true
+},
+"medicine.py::dispense_medicine": {
+"ok": true
+},
+"medicine.py::check_stock": {
+"ok": true
+},
+"medicine.py::is_stock_low": {
+"ok": true
+},
+"medicine.py::get_low_stock_medicines": {
+"ok": true
+},
+"medicine.py::is_expired": {
+"ok": true
+},
+"medicine.py::get_expired_medicines": {
+"ok": true
+},
+"medicine.py::get_expiring_soon": {
+"ok": true
+},
+"medicine.py::calculate_dosage": {
+"ok": true
+},
+"medicine.py::calculate_medicine_cost": {
+"ok": true
+},
+"medicine.py::check_drug_interaction": {
+"ok": true
+},
+"medicine.py::is_safe_for_allergy": {
+"ok": true
+},
+"medicine.py::calculate_total_inventory_value": {
+"ok": true
+},
+"medicine.py::search_medicine_by_name": {
+"ok": true
+},
+"medicine.py::get_medicines_by_category": {
+"ok": true
+},
+"medicine.py::set_reorder_level": {
+"ok": true
+},
+"patient.py::register_patient": {
+"ok": true
+},
+"patient.py::discharge_patient": {
+"ok": true
+},
+"patient.py::admit_patient": {
+"ok": true
+},
+"patient.py::add_medical_history": {
+"ok": true
+},
+"patient.py::add_allergy": {
+"ok": true
+},
+"patient.py::has_allergy": {
+"ok": true
+},
+"patient.py::search_patient": {
+"ok": true
+},
+"patient.py::search_by_name": {
+"ok": true
+},
+"patient.py::get_admitted_patients": {
+"ok": true
+},
+"patient.py::get_patients_by_blood_group": {
+"ok": true
+},
+"patient.py::get_patients_by_ward": {
+"ok": true
+},
+"patient.py::calculate_patient_age_group": {
+"ok": true
+},
+"patient.py::update_phone": {
+"ok": true
+},
+"patient.py::get_total_patients": {
+"ok": true
+},
+"patient.py::get_total_admitted": {
+"ok": true
+},
+"patient.py::is_patient_admitted": {
+"ok": true
+},
+"patient.py::transfer_ward": {
+"ok": true
+},
+"ward.py::add_ward": {
+"ok": true
+},
+"ward.py::assign_bed": {
+"ok": true
+},
+"ward.py::release_bed": {
+"ok": true
+},
+"ward.py::transfer_patient": {
+"ok": true
+},
+"ward.py::get_available_beds": {
+"ok": true
+},
+"ward.py::get_occupancy_rate": {
+"ok": true
+},
+"ward.py::is_ward_full": {
+"ok": true
+},
+"ward.py::get_patients_in_ward": {
+"ok": true
+},
+"ward.py::get_all_available_wards": {
+"ok": true
+},
+"ward.py::get_wards_by_type": {
+"ok": true
+},
+"ward.py::calculate_total_hospital_capacity": {
+"ok": true
+},
+"ward.py::calculate_total_occupied_beds": {
+"ok": true
+},
+"ward.py::calculate_hospital_occupancy_rate": {
+"ok": true
+},
+"ward.py::deactivate_ward": {
+"ok": true
+},
+"ward.py::increase_ward_capacity": {
+"ok": true
+}
+},
+"04_ecommerce_system": {
+"cart.py::add_to_cart": {
+"ok": true
+},
+"cart.py::remove_from_cart": {
+"ok": true
+},
+"cart.py::update_cart_quantity": {
+"ok": true
+},
+"cart.py::clear_cart": {
+"ok": true
+},
+"cart.py::get_cart_items": {
+"ok": true
+},
+"cart.py::calculate_cart_subtotal": {
+"ok": true
+},
+"cart.py::calculate_cart_item_count": {
+"ok": true
+},
+"cart.py::apply_coupon": {
+"ok": true
+},
+"cart.py::calculate_shipping_cost": {
+"ok": true
+},
+"cart.py::calculate_vat": {
+"ok": true
+},
+"cart.py::calculate_order_total": {
+"ok": true
+},
+"cart.py::is_cart_empty": {
+"ok": true
+},
+"cart.py::merge_carts": {
+"ok": true
+},
+"cart.py::get_cart_product_ids": {
+"ok": true
+},
+"cart.py::calculate_savings": {
+"ok": true
+},
+"cart.py::validate_stock_availability": {
+"ok": true
+},
+"delivery.py::calculate_delivery_charge": {
+"ok": true
+},
+"delivery.py::estimate_delivery_days": {
+"ok": true
+},
+"delivery.py::assign_courier": {
+"ok": true
+},
+"delivery.py::update_delivery_status": {
+"ok": true
+},
+"delivery.py::calculate_express_surcharge": {
+"ok": true
+},
+"delivery.py::is_deliverable_to_zone": {
+"ok": true
+},
+"delivery.py::calculate_cod_charge": {
+"ok": true
+},
+"delivery.py::get_active_deliveries": {
+"ok": true
+},
+"delivery.py::get_failed_deliveries": {
+"ok": true
+},
+"delivery.py::calculate_courier_efficiency": {
+"ok": true
+},
+"delivery.py::schedule_pickup": {
+"ok": true
+},
+"delivery.py::calculate_total_delivery_cost": {
+"ok": true
+},
+"delivery.py::get_delivery_by_order": {
+"ok": true
+},
+"delivery.py::calculate_delivery_sla_breach": {
+"ok": true
+},
+"inventory.py::add_stock": {
+"ok": true
+},
+"inventory.py::remove_stock": {
+"ok": true
+},
+"inventory.py::get_total_stock": {
+"ok": true
+},
+"inventory.py::get_stock_in_warehouse": {
+"ok": true
+},
+"inventory.py::transfer_stock": {
+"ok": true
+},
+"inventory.py::is_in_stock": {
+"ok": true
+},
+"inventory.py::get_low_stock_items": {
+"ok": true
+},
+"inventory.py::get_out_of_stock_items": {
+"ok": true
+},
+"inventory.py::calculate_reorder_quantity": {
+"ok": true
+},
+"inventory.py::needs_reorder": {
+"ok": true
+},
+"inventory.py::calculate_stock_value": {
+"ok": true
+},
+"inventory.py::calculate_total_inventory_value": {
+"ok": true
+},
+"inventory.py::reserve_stock": {
+"ok": true
+},
+"inventory.py::release_reservation": {
+"ok": true
+},
+"inventory.py::get_total_reserved": {
+"ok": true
+},
+"inventory.py::get_available_stock": {
+"ok": true
+},
+"inventory.py::get_warehouse_summary": {
+"ok": true
+},
+"order.py::place_order": {
+"ok": true
+},
+"order.py::cancel_order": {
+"ok": true
+},
+"order.py::update_order_status": {
+"ok": true
+},
+"order.py::request_return": {
+"ok": true
+},
+"order.py::calculate_refund_amount": {
+"ok": true
+},
+"order.py::get_order_details": {
+"ok": true
+},
+"order.py::get_user_orders": {
+"ok": true
+},
+"order.py::get_orders_by_status": {
+"ok": true
+},
+"order.py::calculate_order_item_count": {
+"ok": true
+},
+"order.py::is_order_cancellable": {
+"ok": true
+},
+"order.py::get_total_revenue": {
+"ok": true
+},
+"order.py::calculate_average_order_value": {
+"ok": true
+},
+"order.py::get_top_customers": {
+"ok": true
+},
+"order.py::count_orders_by_payment_method": {
+"ok": true
+},
+"order.py::has_order_been_delivered": {
+"ok": true
+},
+"order.py::get_pending_orders": {
+"ok": true
+},
+"payment.py::process_card_payment": {
+"ok": true
+},
+"payment.py::process_bkash_payment": {
+"ok": true
+},
+"payment.py::process_cod_payment": {
+"ok": true
+},
+"payment.py::confirm_cod_payment": {
+"ok": true
+},
+"payment.py::process_refund": {
+"ok": true
+},
+"payment.py::calculate_tax": {
+"ok": true
+},
+"payment.py::calculate_platform_fee": {
+"ok": true
+},
+"payment.py::calculate_cashback": {
+"ok": true
+},
+"payment.py::validate_payment_amount": {
+"ok": true
+},
+"payment.py::get_payment_by_order": {
+"ok": true
+},
+"payment.py::get_total_revenue_by_method": {
+"ok": true
+},
+"payment.py::is_payment_complete": {
+"ok": true
+},
+"payment.py::get_failed_payments": {
+"ok": true
+},
+"payment.py::calculate_installment_amount": {
+"ok": true
+},
+"payment.py::apply_wallet_balance": {
+"ok": true
+},
+"product.py::add_product": {
+"ok": true
+},
+"product.py::remove_product": {
+"ok": true
+},
+"product.py::update_price": {
+"ok": true
+},
+"product.py::apply_discount": {
+"ok": true
+},
+"product.py::add_rating": {
+"ok": true
+},
+"product.py::get_average_rating": {
+"ok": true
+},
+"product.py::search_products": {
+"ok": true
+},
+"product.py::get_products_by_category": {
+"ok": true
+},
+"product.py::get_products_by_price_range": {
+"ok": true
+},
+"product.py::is_in_stock": {
+"ok": true
+},
+"product.py::update_stock": {
+"ok": true
+},
+"product.py::get_low_stock_products": {
+"ok": true
+},
+"product.py::calculate_discount_percentage": {
+"ok": true
+},
+"product.py::get_top_rated_products": {
+"ok": true
+},
+"product.py::get_best_selling_products": {
+"ok": true
+},
+"product.py::deactivate_product": {
+"ok": true
+},
+"product.py::calculate_seller_revenue": {
+"ok": true
+},
+"promotions.py::create_voucher": {
+"ok": true
+},
+"promotions.py::apply_voucher": {
+"ok": true
+},
+"promotions.py::deactivate_voucher": {
+"ok": true
+},
+"promotions.py::create_flash_sale": {
+"ok": true
+},
+"promotions.py::apply_flash_sale_discount": {
+"ok": true
+},
+"promotions.py::is_flash_sale_active": {
+"ok": true
+},
+"promotions.py::calculate_bundle_discount": {
+"ok": true
+},
+"promotions.py::generate_referral_code": {
+"ok": true
+},
+"promotions.py::apply_referral_bonus": {
+"ok": true
+},
+"promotions.py::get_referral_earnings": {
+"ok": true
+},
+"promotions.py::calculate_loyalty_points": {
+"ok": true
+},
+"promotions.py::redeem_loyalty_points": {
+"ok": true
+},
+"promotions.py::calculate_buy_x_get_y_discount": {
+"ok": true
+},
+"seller.py::register_seller": {
+"ok": true
+},
+"seller.py::verify_seller": {
+"ok": true
+},
+"seller.py::calculate_commission": {
+"ok": true
+},
+"seller.py::calculate_seller_payout": {
+"ok": true
+},
+"seller.py::add_sale": {
+"ok": true
+},
+"seller.py::process_payout": {
+"ok": true
+},
+"seller.py::add_seller_rating": {
+"ok": true
+},
+"seller.py::get_seller_rating": {
+"ok": true
+},
+"seller.py::calculate_seller_performance_score": {
+"ok": true
+},
+"seller.py::suspend_seller": {
+"ok": true
+},
+"seller.py::reinstate_seller": {
+"ok": true
+},
+"seller.py::get_top_sellers": {
+"ok": true
+},
+"seller.py::get_verified_sellers": {
+"ok": true
+},
+"seller.py::calculate_total_commission_earned": {
+"ok": true
+}
+},
+"05_ride_sharing": {
+"driver.py::register_driver": {
+"ok": true
+},
+"driver.py::verify_driver": {
+"ok": true
+},
+"driver.py::go_online": {
+"ok": true
+},
+"driver.py::go_offline": {
+"ok": true
+},
+"driver.py::add_earning": {
+"ok": true
+},
+"driver.py::withdraw_earnings": {
+"ok": true
+},
+"driver.py::add_rating": {
+"ok": true
+},
+"driver.py::get_average_rating": {
+"ok": true
+},
+"driver.py::is_driver_eligible_for_ride": {
+"ok": true
+},
+"driver.py::calculate_driver_incentive": {
+"ok": true
+},
+"driver.py::get_online_drivers": {
+"ok": true
+},
+"driver.py::get_drivers_by_vehicle_type": {
+"ok": true
+},
+"driver.py::suspend_driver": {
+"ok": true
+},
+"driver.py::calculate_level": {
+"ok": true
+},
+"driver.py::is_rating_below_threshold": {
+"ok": true
+},
+"driver.py::calculate_weekly_summary": {
+"ok": true
+},
+"fare.py::calculate_base_fare": {
+"ok": true
+},
+"fare.py::calculate_distance_fare": {
+"ok": true
+},
+"fare.py::calculate_time_fare": {
+"ok": true
+},
+"fare.py::calculate_total_fare": {
+"ok": true
+},
+"fare.py::calculate_surge_multiplier": {
+"ok": true
+},
+"fare.py::is_surge_active": {
+"ok": true
+},
+"fare.py::apply_promo_code": {
+"ok": true
+},
+"fare.py::calculate_driver_commission": {
+"ok": true
+},
+"fare.py::calculate_platform_cut": {
+"ok": true
+},
+"fare.py::calculate_cancellation_fee": {
+"ok": true
+},
+"fare.py::calculate_waiting_charge": {
+"ok": true
+},
+"fare.py::estimate_fare_range": {
+"ok": true
+},
+"fare.py::calculate_toll_adjustment": {
+"ok": true
+},
+"fare.py::is_minimum_fare_met": {
+"ok": true
+},
+"rating.py::submit_driver_rating": {
+"ok": true
+},
+"rating.py::submit_rider_rating": {
+"ok": true
+},
+"rating.py::get_average_rating": {
+"ok": true
+},
+"rating.py::get_rating_count": {
+"ok": true
+},
+"rating.py::get_rating_breakdown": {
+"ok": true
+},
+"rating.py::is_below_minimum_rating": {
+"ok": true
+},
+"rating.py::get_recent_ratings": {
+"ok": true
+},
+"rating.py::calculate_rating_trend": {
+"ok": true
+},
+"rating.py::get_highly_rated_drivers": {
+"ok": true
+},
+"rating.py::apply_rating_penalty": {
+"ok": true
+},
+"rating.py::calculate_effective_rating": {
+"ok": true
+},
+"rating.py::should_suspend_for_rating": {
+"ok": true
+},
+"rating.py::get_unrated_rides": {
+"ok": true
+},
+"ride.py::request_ride": {
+"ok": true
+},
+"ride.py::assign_driver": {
+"ok": true
+},
+"ride.py::start_ride": {
+"ok": true
+},
+"ride.py::complete_ride": {
+"ok": true
+},
+"ride.py::cancel_ride": {
+"ok": true
+},
+"ride.py::get_ride_details": {
+"ok": true
+},
+"ride.py::get_rider_rides": {
+"ok": true
+},
+"ride.py::get_driver_rides": {
+"ok": true
+},
+"ride.py::get_active_rides": {
+"ok": true
+},
+"ride.py::count_completed_rides": {
+"ok": true
+},
+"ride.py::calculate_driver_total_earnings": {
+"ok": true
+},
+"ride.py::calculate_total_distance": {
+"ok": true
+},
+"ride.py::get_cancellation_rate": {
+"ok": true
+},
+"ride.py::is_ride_active": {
+"ok": true
+},
+"rider.py::register_rider": {
+"ok": false,
+"error": "TypeError: cannot use 'list' as a dict key (unhashable type: 'list')"
+},
+"rider.py::top_up_wallet": {
+"ok": true
+},
+"rider.py::deduct_wallet": {
+"ok": true
+},
+"rider.py::get_wallet_balance": {
+"ok": true
+},
+"rider.py::has_sufficient_balance": {
+"ok": true
+},
+"rider.py::add_loyalty_points": {
+"ok": true
+},
+"rider.py::redeem_loyalty_points": {
+"ok": true
+},
+"rider.py::calculate_loyalty_points_earned": {
+"ok": true
+},
+"rider.py::increment_ride_count": {
+"ok": true
+},
+"rider.py::get_rider_level": {
+"ok": true
+},
+"rider.py::apply_referral": {
+"ok": true
+},
+"rider.py::deactivate_rider": {
+"ok": true
+},
+"rider.py::is_rider_active": {
+"ok": true
+},
+"rider.py::get_vip_riders": {
+"ok": true
+},
+"rider.py::calculate_cashback": {
+"ok": true
+},
+"rider.py::search_rider": {
+"ok": true
+},
+"safety.py::trigger_sos": {
+"ok": true
+},
+"safety.py::resolve_sos": {
+"ok": true
+},
+"safety.py::detect_route_deviation": {
+"ok": false,
+"error": "ValueError: too many values to unpack (expected 2, got 3)"
+},
+"safety.py::calculate_distance": {
+"ok": true
+},
+"safety.py::share_trip": {
+"ok": true
+},
+"safety.py::stop_trip_sharing": {
+"ok": true
+},
+"safety.py::verify_driver_selfie": {
+"ok": true
+},
+"safety.py::calculate_safety_score": {
+"ok": true
+},
+"safety.py::is_driver_safe_to_operate": {
+"ok": true
+},
+"safety.py::flag_ride": {
+"ok": true
+},
+"safety.py::get_active_sos_alerts": {
+"ok": true
+},
+"safety.py::calculate_ride_duration": {
+"ok": false,
+"error": "AttributeError: 'int' object has no attribute 'total_seconds'"
+},
+"safety.py::is_ride_duration_suspicious": {
+"ok": true
+},
+"safety.py::get_unreviewed_flags": {
+"ok": true
+}
+},
+"arrow": {
+"arrow/api.py::get": {
+"ok": true
+},
+"arrow/api.py::utcnow": {
+"ok": true
+},
+"arrow/api.py::now": {
+"ok": true
+},
+"arrow/arrow.py::Arrow.now": {
+"ok": true
+},
+"arrow/arrow.py::Arrow.utcnow": {
+"ok": true
+},
+"arrow/arrow.py::Arrow.fromtimestamp": {
+"ok": true
+},
+"arrow/arrow.py::Arrow.utcfromtimestamp": {
+"ok": true
+},
+"arrow/arrow.py::Arrow.strptime": {
+"ok": false,
+"error": "ValueError: time data 'hello' does not match format 'YYYY-MM-DD'"
+},
+"arrow/arrow.py::Arrow.fromordinal": {
+"ok": true
+},
+"arrow/arrow.py::Arrow._get_datetime": {
+"ok": true
+},
+"arrow/arrow.py::Arrow._get_iteration_params": {
+"ok": true
+},
+"arrow/locales.py::get_locale": {
+"ok": false,
+"error": "ValueError: Unsupported locale 'locale-name'."
+},
+"arrow/locales.py::get_locale_by_class_name": {
+"ok": false,
+"error": "ValueError: Unsupported locale 'NonExistentLocale'."
+},
+"arrow/locales.py::Locale.__init_subclass__": {
+"ok": true
+},
+"arrow/parser.py::DateTimeParser._generate_choice_re": {
+"ok": true
+},
+"arrow/parser.py::TzinfoParser.parse": {
+"ok": false,
+"error": "ParserError: Could not parse timezone expression 'hello'."
+},
+"arrow/util.py::is_timestamp": {
+"ok": true
+},
+"arrow/util.py::validate_ordinal": {
+"ok": true
+},
+"arrow/util.py::normalize_timestamp": {
+"ok": true
+},
+"arrow/util.py::iso_to_gregorian": {
+"ok": true
+},
+"arrow/util.py::validate_bounds": {
+"ok": false,
+"error": "ValueError: Invalid bounds. Please select between '()', '(]', '[)', or '[]'."
+}
+},
+"attrs": {
+"attr/_config.py::set_run_validators": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"attr/_config.py::get_run_validators": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"attr/__init__.py::_make_getattr": {
+"ok": true
+},
+"attr/__init__.py::__dir__": {
+"ok": true
+},
+"attr/_cmp.py::cmp_using": {
+"ok": true
+},
+"attr/_cmp.py::_make_init": {
+"ok": true
+},
+"attr/_cmp.py::_is_comparable_to": {
+"ok": false,
+"error": "AttributeError: 'str' object has no attribute '_requirements'"
+},
+"attr/_cmp.py::_check_same_type": {
+"ok": false,
+"error": "AttributeError: 'str' object has no attribute 'value'"
+},
+"attr/_compat.py::get_generic_base": {
+"ok": true
+},
+"attr/_funcs.py::asdict": {
+"ok": false,
+"error": "NotAnAttrsClassError: <class 'str'> is not an attrs-decorated class."
+},
+"attr/_funcs.py::_asdict_anything": {
+"ok": false,
+"error": "TypeError: 'str' object is not callable"
+},
+"attr/_funcs.py::astuple": {
+"ok": false,
+"error": "NotAnAttrsClassError: <class 'str'> is not an attrs-decorated class."
+},
+"attr/_funcs.py::assoc": {
+"ok": false,
+"error": "NotAnAttrsClassError: <class 'str'> is not an attrs-decorated class."
+},
+"attr/_make.py::attrib": {
+"ok": true
+},
+"attr/_make.py::_compile_and_eval": {
+"ok": false,
+"error": "NameError: name 'hello' is not defined"
+},
+"attr/_make.py::_linecache_and_compile": {
+"ok": false,
+"error": "NameError: name 'hello' is not defined"
+},
+"attr/_make.py::_make_attr_tuple_class": {
+"ok": true
+},
+"attr/_make.py::_is_class_var": {
+"ok": true
+},
+"attr/_make.py::_frozen_setattrs": {
+"ok": false,
+"error": "FrozenInstanceError: can't set attribute"
+},
+"attr/_make.py::_frozen_delattrs": {
+"ok": false,
+"error": "FrozenInstanceError: can't set attribute"
+},
+"attr/_make.py::evolve": {
+"ok": false,
+"error": "TypeError: evolve() takes 1 positional argument, but 0 were given"
+},
+"attr/_make.py::_determine_attrs_eq_order": {
+"ok": false,
+"error": "ValueError: Don't mix `cmp` with `eq' and `order`."
+},
+"attr/_make.py::_determine_attrib_eq_order": {
+"ok": false,
+"error": "ValueError: Don't mix `cmp` with `eq' and `order`."
+},
+"attr/_make.py::attrs": {
+"ok": true
+},
+"attr/_make.py::__ne__": {
+"ok": true
+},
+"attr/_make.py::_make_eq_script": {
+"ok": true
+},
+"attr/_make.py::_make_repr_script": {
+"ok": false,
+"error": "AttributeError: 'str' object has no attribute 'repr'"
+},
+"attr/_make.py::validate": {
+"ok": false,
+"error": "NotAnAttrsClassError: <class 'str'> is not an attrs-decorated class."
+},
+"attr/_make.py::_is_slot_attr": {
+"ok": false,
+"error": "AttributeError: 'bool' object has no attribute '__dict__'"
+},
+"attr/_make.py::_setattr": {
+"ok": true
+},
+"attr/_make.py::_assign": {
+"ok": true
+},
+"attr/_make.py::_determine_setters": {
+"ok": true
+},
+"attr/_make.py::_attrs_to_init_script": {
+"ok": true
+},
+"attr/_make.py::_default_init_alias_for": {
+"ok": true
+},
+"attr/_make.py::Converter._get_global_name": {
+"ok": true
+},
+"attr/_make.py::make_class": {
+"ok": true
+},
+"attr/_make.py::and_": {
+"ok": true
+},
+"attr/_make.py::pipe": {
+"ok": true
+},
+"attr/_next_gen.py::define": {
+"ok": true
+},
+"attr/_next_gen.py::field": {
+"ok": true
+},
+"attr/_next_gen.py::asdict": {
+"ok": false,
+"error": "NotAnAttrsClassError: <class 'str'> is not an attrs-decorated class."
+},
+"attr/_next_gen.py::astuple": {
+"ok": false,
+"error": "NotAnAttrsClassError: <class 'str'> is not an attrs-decorated class."
+},
+"attr/_version_info.py::VersionInfo._from_version_string": {
+"ok": true
+},
+"attr/converters.py::optional": {
+"ok": true
+},
+"attr/converters.py::default_if_none": {
+"ok": true
+},
+"attr/converters.py::to_bool": {
+"ok": true
+},
+"attr/filters.py::_split_what": {
+"ok": true
+},
+"attr/filters.py::include": {
+"ok": true
+},
+"attr/filters.py::exclude": {
+"ok": true
+},
+"attr/setters.py::pipe": {
+"ok": true
+},
+"attr/setters.py::frozen": {
+"ok": false,
+"error": "FrozenAttributeError: can't set attribute"
+},
+"attr/setters.py::validate": {
+"ok": false,
+"error": "AttributeError: 'str' object has no attribute 'validator'"
+},
+"attr/setters.py::convert": {
+"ok": false,
+"error": "AttributeError: 'str' object has no attribute 'converter'"
+},
+"attr/validators.py::set_disabled": {
+"ok": true
+},
+"attr/validators.py::get_disabled": {
+"ok": true
+},
+"attr/validators.py::disabled": {
+"ok": true
+},
+"attr/validators.py::instance_of": {
+"ok": true
+},
+"attr/validators.py::matches_re": {
+"ok": true
+},
+"attr/validators.py::optional": {
+"ok": true
+},
+"attr/validators.py::in_": {
+"ok": true
+},
+"attr/validators.py::is_callable": {
+"ok": true
+},
+"attr/validators.py::deep_iterable": {
+"ok": false,
+"error": "NotCallableError: 'member_validator' must be callable (got 'sample' that is a <class 'str'>)."
+},
+"attr/validators.py::deep_mapping": {
+"ok": false,
+"error": "ValueError: At least one of key_validator or value_validator must be provided"
+},
+"attr/validators.py::lt": {
+"ok": true
+},
+"attr/validators.py::le": {
+"ok": true
+},
+"attr/validators.py::ge": {
+"ok": true
+},
+"attr/validators.py::gt": {
+"ok": true
+},
+"attr/validators.py::ne": {
+"ok": true
+},
+"attr/validators.py::max_len": {
+"ok": true
+},
+"attr/validators.py::min_len": {
+"ok": true
+},
+"attr/validators.py::_subclass_of": {
+"ok": true
+},
+"attr/validators.py::not_": {
+"ok": true
+},
+"attr/validators.py::or_": {
+"ok": true
+},
+"attrs/__init__.py::__dir__": {
+"ok": true
+}
+},
+"black": {
+"black/__init__.py::_write_to_stdout": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"black/__init__.py::patched_main": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"black/comments.py::_remove_preceding_newline_for_comment": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"black/handle_ipynb_magics.py::jupyter_dependencies_are_installed": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"black/handle_ipynb_magics.py::remove_trailing_semicolon": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"black/output.py::dump_to_file": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"blackd/__init__.py::main": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"blackd/__init__.py::patched_main": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"blib2to3/pgen2/driver.py::main": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"blib2to3/pgen2/parse.py::stack_copy": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"black/__init__.py::WriteBack.from_configuration": {
+"ok": true
+},
+"black/__init__.py::_target_versions_exceed_runtime": {
+"ok": true
+},
+"black/__init__.py::_version_mismatch_message": {
+"ok": false,
+"error": "ValueError: max() iterable argument is empty"
+},
+"black/__init__.py::re_compile_maybe_verbose": {
+"ok": true
+},
+"black/__init__.py::_echo_stdin_unchanged": {
+"ok": true
+},
+"black/__init__.py::validate_metadata": {
+"ok": true
+},
+"black/__init__.py::_restore_unselected_trailing_blank_lines": {
+"ok": true
+},
+"black/__init__.py::_declared_encoding": {
+"ok": true
+},
+"black/__init__.py::_keep_encoding_declaration_ignored": {
+"ok": true
+},
+"black/__init__.py::_black_info": {
+"ok": true
+},
+"black/__init__.py::assert_equivalent": {
+"ok": false,
+"error": "ASTSafetyError: INTERNAL ERROR: Black dev on Python (CPython) 3.14.2 produced code that is not equivalent to the source.  Please report a bug on https://github.com/psf/black/issues.  This diff might b"
+},
+"black/brackets.py::max_delimiter_priority": {
+"ok": true
+},
+"black/brackets.py::_top_level_leaves": {
+"ok": true
+},
+"black/brackets.py::get_leaves_inside_matching_brackets": {
+"ok": true
+},
+"black/cache.py::get_cache_dir": {
+"ok": true
+},
+"black/comments.py::contains_pragma_comment": {
+"ok": true
+},
+"black/comments.py::contains_fmt_directive": {
+"ok": true
+},
+"black/concurrency.py::maybe_use_uvloop": {
+"ok": true
+},
+"black/concurrency.py::cancel": {
+"ok": true
+},
+"black/concurrency.py::cap_process_pool_workers": {
+"ok": true
+},
+"black/concurrency.py::_is_tempdir_too_long_for_unix_sockets": {
+"ok": true
+},
+"black/debug.py::DebugVisitor.show": {
+"ok": true
+},
+"black/files.py::_load_toml": {
+"ok": false,
+"error": "TOMLDecodeError: Expected '=' after a key in a key/value pair (at line 1, column 7)"
+},
+"black/files.py::find_project_root": {
+"ok": true
+},
+"black/files.py::_find_project_root_cached": {
+"ok": false,
+"error": "TypeError: unhashable type: 'list'"
+},
+"black/files.py::find_pyproject_toml": {
+"ok": true
+},
+"black/files.py::parse_pyproject_toml": {
+"ok": true
+},
+"black/files.py::infer_target_version": {
+"ok": true
+},
+"black/files.py::parse_req_python_version": {
+"ok": false,
+"error": "InvalidVersion: Invalid version: 'hello'"
+},
+"black/files.py::parse_req_python_specifier": {
+"ok": false,
+"error": "InvalidSpecifier: Invalid specifier: 'hello'"
+},
+"black/files.py::find_user_pyproject_toml": {
+"ok": true
+},
+"black/handle_ipynb_magics.py::put_trailing_semicolon_back": {
+"ok": true
+},
+"black/handle_ipynb_magics.py::mask_cell": {
+"ok": true
+},
+"black/handle_ipynb_magics.py::create_token": {
+"ok": true
+},
+"black/handle_ipynb_magics.py::get_token": {
+"ok": true
+},
+"black/handle_ipynb_magics.py::replace_cell_magics": {
+"ok": true
+},
+"black/handle_ipynb_magics.py::replace_magics": {
+"ok": true
+},
+"black/handle_ipynb_magics.py::unmask_cell": {
+"ok": true
+},
+"black/handle_ipynb_magics.py::_get_code_start": {
+"ok": true
+},
+"black/handle_ipynb_magics.py::_stripped_lines": {
+"ok": true
+},
+"black/handle_ipynb_magics.py::_get_str_args": {
+"ok": true
+},
+"black/lines.py::enumerate_reversed": {
+"ok": true
+},
+"black/nodes.py::make_simple_prefix": {
+"ok": true
+},
+"black/numerics.py::format_hex": {
+"ok": true
+},
+"black/numerics.py::format_scientific_notation": {
+"ok": true
+},
+"black/numerics.py::format_complex_number": {
+"ok": true
+},
+"black/numerics.py::format_float_or_int_string": {
+"ok": true
+},
+"black/output.py::_out": {
+"ok": true
+},
+"black/output.py::_err": {
+"ok": true
+},
+"black/output.py::out": {
+"ok": true
+},
+"black/output.py::err": {
+"ok": true
+},
+"black/output.py::ipynb_diff": {
+"ok": false,
+"error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+},
+"black/output.py::_splitlines_no_ff": {
+"ok": true
+},
+"black/output.py::diff": {
+"ok": true
+},
+"black/output.py::color_diff": {
+"ok": true
+},
+"black/output.py::style_output": {
+"ok": true
+},
+"black/output.py::_color_enabled": {
+"ok": true
+},
+"black/parsing.py::get_grammars": {
+"ok": true
+},
+"black/parsing.py::lib2to3_parse": {
+"ok": true
+},
+"black/parsing.py::_parse_single_version": {
+"ok": false,
+"error": "TypeError: 'list' object cannot be interpreted as an integer"
+},
+"black/parsing.py::parse_ast": {
+"ok": true
+},
+"black/parsing.py::_normalize": {
+"ok": true
+},
+"black/parsing.py::_unwrap_tuples": {
+"ok": true
+},
+"black/ranges.py::parse_line_ranges": {
+"ok": true
+},
+"black/ranges.py::is_valid_line_range": {
+"ok": false,
+"error": "IndexError: list index out of range"
+},
+"black/ranges.py::sanitized_lines": {
+"ok": true
+},
+"black/ranges.py::adjusted_lines": {
+"ok": true
+},
+"black/ranges.py::_str_with_standalone_comments": {
+"ok": false,
+"error": "ValueError: zip() argument 2 is longer than argument 1"
+},
+"black/ranges.py::_ends_with_fmt_skip": {
+"ok": true
+},
+"black/ranges.py::_get_line_range": {
+"ok": true
+},
+"black/ranges.py::_calculate_lines_mappings": {
+"ok": true
+},
+"black/ranges.py::_find_lines_mapping_index": {
+"ok": true
+},
+"black/schema.py::get_schema": {
+"ok": true
+},
+"black/strings.py::has_triple_quotes": {
+"ok": true
+},
+"black/strings.py::lines_with_leading_tabs_expanded": {
+"ok": true
+},
+"black/strings.py::fix_multiline_docstring": {
+"ok": true
+},
+"black/strings.py::get_string_prefix": {
+"ok": false,
+"error": "AssertionError: 'hello world' is missing a starting quote character (' or \")."
+},
+"black/strings.py::assert_is_leaf_string": {
+"ok": false,
+"error": "AssertionError: 'hello world' is missing a starting quote character (' or \")."
+},
+"black/strings.py::_cached_compile": {
+"ok": true
+},
+"black/strings.py::_ends_with_unescaped_quote": {
+"ok": true
+},
+"black/strings.py::normalize_string_quotes": {
+"ok": false,
+"error": "AssertionError: INTERNAL ERROR: Malformed string 'hello world'"
+},
+"black/strings.py::normalize_fstring_quotes": {
+"ok": true
+},
+"black/strings.py::_normalize_unicode_escape_sequences_in_text": {
+"ok": true
+},
+"black/strings.py::char_width": {
+"ok": false,
+"error": "TypeError: ord() expected a character, but string of length 5 found"
+},
+"black/strings.py::str_width": {
+"ok": true
+},
+"black/strings.py::count_chars_in_width": {
+"ok": true
+},
+"black/trans.py::TErr": {
+"ok": true
+},
+"black/trans.py::is_expression_chained": {
+"ok": true
+},
+"black/trans.py::CustomSplitMapMixin._get_key": {
+"ok": true
+},
+"black/trans.py::iter_fexpr_spans": {
+"ok": true
+},
+"black/trans.py::fstring_contains_expr": {
+"ok": true
+},
+"black/trans.py::_toggle_fexpr_quotes": {
+"ok": true
+},
+"black/trans.py::StringParenWrapper._return_match": {
+"ok": false,
+"error": "IndexError: list index out of range"
+},
+"black/trans.py::StringParenWrapper._return_annotation_match": {
+"ok": true
+},
+"black/trans.py::StringParenWrapper._else_match": {
+"ok": false,
+"error": "IndexError: list index out of range"
+},
+"black/trans.py::StringParenWrapper._assert_match": {
+"ok": false,
+"error": "IndexError: list index out of range"
+},
+"black/trans.py::StringParenWrapper._assign_match": {
+"ok": false,
+"error": "IndexError: list index out of range"
+},
+"black/trans.py::StringParenWrapper._binary_operand_end": {
+"ok": false,
+"error": "IndexError: list index out of range"
+},
+"black/trans.py::StringParenWrapper._dict_or_lambda_match": {
+"ok": false,
+"error": "IndexError: list index out of range"
+},
+"black/trans.py::is_valid_index_factory": {
+"ok": true
+},
+"blackd/__init__.py::executor": {
+"ok": true
+},
+"blackd/__init__.py::make_app": {
+"ok": true
+},
+"blackd/__init__.py::parse_python_variant_header": {
+"ok": false,
+"error": "InvalidVariantHeader: expected e.g. '3.7', 'py3.5'"
+},
+"blackd/middlewares.py::cors": {
+"ok": true
+},
+"blib2to3/pgen2/driver.py::load_grammar": {
+"ok": false,
+"error": "FileNotFoundError: [Errno 2] No such file or directory: 'Grammar.txt'"
+},
+"blib2to3/pgen2/driver.py::_newer": {
+"ok": true
+},
+"blib2to3/pgen2/driver.py::load_packaged_grammar": {
+"ok": false,
+"error": "FileNotFoundError: [Errno 2] No such file or directory: 'hello'"
+},
+"blib2to3/pgen2/literals.py::evalString": {
+"ok": false,
+"error": "AssertionError: 'h'"
+},
+"blib2to3/pgen2/literals.py::test": {
+"ok": true
+},
+"blib2to3/pgen2/pgen.py::generate_grammar": {
+"ok": false,
+"error": "FileNotFoundError: [Errno 2] No such file or directory: 'Grammar.txt'"
+},
+"blib2to3/pgen2/tokenize.py::tokenize": {
+"ok": true
+},
+"blib2to3/pygram.py::initialize": {
+"ok": true
+},
+"blib2to3/pytree.py::type_repr": {
+"ok": true
+},
+"blib2to3/pytree.py::Base.__new__": {
+"ok": false,
+"error": "TypeError: Base.__new__() missing 1 required positional argument: 'cls'"
+}
+},
+"click": {
+"click/_compat.py::_wrap_io_open": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"click/_compat.py::open_stream": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"click/_termui_impl.py::open_url": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"click/decorators.py::confirmation_option": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"click/termui.py::_mask_hidden_input": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"click/termui.py::hidden_prompt_func": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"click/termui.py::_build_prompt": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"click/termui.py::prompt": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"click/termui.py::confirm": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"click/termui.py::clear": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"click/termui.py::edit": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"click/termui.py::launch": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"click/termui.py::getchar": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"click/termui.py::pause": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"click/testing.py::make_input_stream": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"click/utils.py::open_file": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"click/__init__.py::__getattr__": {
+"ok": false,
+"error": "AttributeError: Alice"
+},
+"click/_compat.py::is_ascii_encoding": {
+"ok": true
+},
+"click/_compat.py::get_binary_stdin": {
+"ok": false,
+"error": "RuntimeError: Was not able to determine binary stream for sys.stdin."
+},
+"click/_compat.py::get_binary_stdout": {
+"ok": false,
+"error": "RuntimeError: Was not able to determine binary stream for sys.stdout."
+},
+"click/_compat.py::get_binary_stderr": {
+"ok": false,
+"error": "RuntimeError: Was not able to determine binary stream for sys.stderr."
+},
+"click/_compat.py::get_text_stdin": {
+"ok": true
+},
+"click/_compat.py::get_text_stdout": {
+"ok": true
+},
+"click/_compat.py::get_text_stderr": {
+"ok": true
+},
+"click/_compat.py::strip_ansi": {
+"ok": true
+},
+"click/_compat.py::should_strip_ansi": {
+"ok": true
+},
+"click/_compat.py::term_len": {
+"ok": true
+},
+"click/_termui_impl.py::_resolve_pager_command": {
+"ok": true
+},
+"click/_termui_impl.py::_pager_contextmanager": {
+"ok": true
+},
+"click/_termui_impl.py::get_pager_file": {
+"ok": true
+},
+"click/_termui_impl.py::_less_uses_raw_mode": {
+"ok": true
+},
+"click/_termui_impl.py::_translate_ch_to_exc": {
+"ok": true
+},
+"click/_winconsole.py::_WindowsConsoleWriter._get_error_message": {
+"ok": false,
+"error": "AssertionError: "
+},
+"click/core.py::_echo_aborted": {
+"ok": true
+},
+"click/core.py::_outside_click_stacklevel": {
+"ok": true
+},
+"click/core.py::_format_deprecated_label": {
+"ok": true
+},
+"click/core.py::_format_deprecated_suffix": {
+"ok": true
+},
+"click/core.py::batch": {
+"ok": true
+},
+"click/core.py::iter_params_for_processing": {
+"ok": true
+},
+"click/core.py::_FakeSubclassCheck.__instancecheck__": {
+"ok": false,
+"error": "TypeError: _FakeSubclassCheck.__instancecheck__() missing 1 required positional argument: 'instance'"
+},
+"click/core.py::_check_iter": {
+"ok": true
+},
+"click/core.py::Parameter.__init_subclass__": {
+"ok": true
+},
+"click/core.py::Parameter._hide_unset": {
+"ok": true
+},
+"click/core.py::__getattr__": {
+"ok": false,
+"error": "AttributeError: Alice"
+},
+"click/decorators.py::pass_meta_key": {
+"ok": true
+},
+"click/decorators.py::command": {
+"ok": true
+},
+"click/decorators.py::group": {
+"ok": true
+},
+"click/decorators.py::argument": {
+"ok": true
+},
+"click/decorators.py::option": {
+"ok": true
+},
+"click/decorators.py::password_option": {
+"ok": true
+},
+"click/decorators.py::version_option": {
+"ok": true
+},
+"click/decorators.py::help_option": {
+"ok": true
+},
+"click/exceptions.py::_join_param_hints": {
+"ok": true
+},
+"click/exceptions.py::_format_possibilities": {
+"ok": true
+},
+"click/formatting.py::measure_table": {
+"ok": true
+},
+"click/formatting.py::iter_rows": {
+"ok": true
+},
+"click/formatting.py::wrap_text": {
+"ok": true
+},
+"click/formatting.py::join_options": {
+"ok": true
+},
+"click/globals.py::get_current_context": {
+"ok": false,
+"error": "RuntimeError: There is no active click context."
+},
+"click/globals.py::pop_context": {
+"ok": false,
+"error": "AttributeError: '_thread._local' object has no attribute 'stack'"
+},
+"click/globals.py::resolve_color_default": {
+"ok": true
+},
+"click/parser.py::_unpack_args": {
+"ok": true
+},
+"click/parser.py::_split_opt": {
+"ok": true
+},
+"click/parser.py::__getattr__": {
+"ok": false,
+"error": "AttributeError: Alice"
+},
+"click/shell_completion.py::BashComplete._check_version": {
+"ok": true
+},
+"click/shell_completion.py::get_completion_class": {
+"ok": true
+},
+"click/shell_completion.py::split_arg_string": {
+"ok": true
+},
+"click/termui.py::get_pager_file": {
+"ok": true
+},
+"click/termui.py::echo_via_pager": {
+"ok": true
+},
+"click/termui.py::progressbar": {
+"ok": true
+},
+"click/termui.py::_interpret_color": {
+"ok": true
+},
+"click/termui.py::style": {
+"ok": true
+},
+"click/termui.py::unstyle": {
+"ok": true
+},
+"click/termui.py::secho": {
+"ok": true
+},
+"click/termui.py::raw_terminal": {
+"ok": true
+},
+"click/types.py::BoolParamType.str_to_bool": {
+"ok": true
+},
+"click/types.py::_is_file_like": {
+"ok": true
+},
+"click/types.py::convert_type": {
+"ok": true
+},
+"click/utils.py::_posixify": {
+"ok": true
+},
+"click/utils.py::make_str": {
+"ok": true
+},
+"click/utils.py::_make_default_short_help": {
+"ok": true
+},
+"click/utils.py::echo": {
+"ok": true
+},
+"click/utils.py::_get_binary_stream": {
+"ok": false,
+"error": "RuntimeError: Was not able to determine binary stream for sys.stdin."
+},
+"click/utils.py::_get_text_stream": {
+"ok": true
+},
+"click/utils.py::format_filename": {
+"ok": true
+},
+"click/utils.py::get_app_dir": {
+"ok": true
+},
+"click/utils.py::_detect_program_name": {
+"ok": true
+},
+"click/utils.py::_expand_args": {
+"ok": true
+},
+"click/utils.py::__getattr__": {
+"ok": false,
+"error": "AttributeError: Alice"
+}
+},
+"fastapi": {
+"fastapi/cli.py::main": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"fastapi/dependencies/utils.py::ensure_multipart_is_installed": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"fastapi/dependencies/utils.py::_is_empty_file_input": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"fastapi/_body_limit.py::validate_max_body_size": {
+"ok": true
+},
+"fastapi/_body_limit.py::get_body_size_limit": {
+"ok": true
+},
+"fastapi/_compat/shared.py::lenient_issubclass": {
+"ok": true
+},
+"fastapi/_compat/shared.py::_annotation_is_sequence": {
+"ok": true
+},
+"fastapi/_compat/shared.py::field_annotation_is_sequence": {
+"ok": true
+},
+"fastapi/_compat/shared.py::value_is_sequence": {
+"ok": true
+},
+"fastapi/_compat/shared.py::_annotation_is_complex": {
+"ok": true
+},
+"fastapi/_compat/shared.py::field_annotation_is_complex": {
+"ok": true
+},
+"fastapi/_compat/shared.py::field_annotation_is_scalar": {
+"ok": true
+},
+"fastapi/_compat/shared.py::field_annotation_is_scalar_sequence": {
+"ok": true
+},
+"fastapi/_compat/shared.py::is_bytes_or_nonable_bytes_annotation": {
+"ok": true
+},
+"fastapi/_compat/shared.py::is_uploadfile_or_nonable_uploadfile_annotation": {
+"ok": true
+},
+"fastapi/_compat/shared.py::is_bytes_sequence_annotation": {
+"ok": true
+},
+"fastapi/_compat/shared.py::is_uploadfile_sequence_annotation": {
+"ok": true
+},
+"fastapi/_compat/shared.py::is_pydantic_v1_model_instance": {
+"ok": true
+},
+"fastapi/_compat/shared.py::is_pydantic_v1_model_class": {
+"ok": true
+},
+"fastapi/_compat/shared.py::annotation_is_pydantic_v1": {
+"ok": true
+},
+"fastapi/_compat/v2.py::evaluate_forwardref": {
+"ok": false,
+"error": "SyntaxError: Forward reference must be an expression -- got ''"
+},
+"fastapi/_compat/v2.py::_annotation_has_computed_fields": {
+"ok": true
+},
+"fastapi/_compat/v2.py::get_missing_field_error": {
+"ok": true
+},
+"fastapi/_compat/v2.py::create_body_model": {
+"ok": true
+},
+"fastapi/_compat/v2.py::normalize_name": {
+"ok": true
+},
+"fastapi/_compat/v2.py::_regenerate_error_with_loc": {
+"ok": true
+},
+"fastapi/datastructures.py::UploadFile._validate": {
+"ok": false,
+"error": "ValueError: Expected UploadFile, received: <class 'str'>"
+},
+"fastapi/dependencies/utils.py::_get_model_type": {
+"ok": true
+},
+"fastapi/dependencies/utils.py::_get_flat_fields_from_params": {
+"ok": true
+},
+"fastapi/dependencies/utils.py::get_typed_annotation": {
+"ok": false,
+"error": "SyntaxError: Forward reference must be an expression -- got ''"
+},
+"fastapi/dependencies/utils.py::get_stream_item_type": {
+"ok": true
+},
+"fastapi/dependencies/utils.py::analyze_param": {
+"ok": false,
+"error": "SyntaxError: Forward reference must be an expression -- got ''"
+},
+"fastapi/dependencies/utils.py::_get_multidict_extras": {
+"ok": true
+},
+"fastapi/dependencies/utils.py::request_params_to_args": {
+"ok": true
+},
+"fastapi/dependencies/utils.py::_get_form_union_models": {
+"ok": true
+},
+"fastapi/dependencies/utils.py::_add_form_union_validators": {
+"ok": false,
+"error": "TypeError: Cannot take a Union of no types."
+},
+"fastapi/dependencies/utils.py::_should_embed_body_fields": {
+"ok": true
+},
+"fastapi/dependencies/utils.py::request_body_to_args": {
+"ok": false,
+"error": "AssertionError: request_body_to_args() should be called with fields"
+},
+"fastapi/dependencies/utils.py::_apply_form_body_schema": {
+"ok": false,
+"error": "KeyError: 'properties'"
+},
+"fastapi/dependencies/utils.py::_get_body_field": {
+"ok": true
+},
+"fastapi/encoders.py::generate_encoders_by_class_tuples": {
+"ok": true
+},
+"fastapi/encoders.py::jsonable_encoder": {
+"ok": true
+},
+"fastapi/openapi/docs.py::_html_safe_json": {
+"ok": true
+},
+"fastapi/openapi/docs.py::get_swagger_ui_html": {
+"ok": true
+},
+"fastapi/openapi/docs.py::get_redoc_html": {
+"ok": true
+},
+"fastapi/openapi/docs.py::get_swagger_ui_oauth2_redirect_html": {
+"ok": true
+},
+"fastapi/openapi/utils.py::_get_openapi_security_definitions": {
+"ok": true
+},
+"fastapi/openapi/utils.py::get_fields_from_routes": {
+"ok": true
+},
+"fastapi/openapi/utils.py::get_openapi": {
+"ok": true
+},
+"fastapi/param_functions.py::Path": {
+"ok": true
+},
+"fastapi/param_functions.py::Query": {
+"ok": true
+},
+"fastapi/param_functions.py::Header": {
+"ok": true
+},
+"fastapi/param_functions.py::Cookie": {
+"ok": true
+},
+"fastapi/param_functions.py::Body": {
+"ok": true
+},
+"fastapi/param_functions.py::Form": {
+"ok": true
+},
+"fastapi/param_functions.py::File": {
+"ok": true
+},
+"fastapi/param_functions.py::Depends": {
+"ok": true
+},
+"fastapi/param_functions.py::Security": {
+"ok": true
+},
+"fastapi/routing.py::_extract_endpoint_context": {
+"ok": true
+},
+"fastapi/routing.py::_normalize_non_finite_floats": {
+"ok": true
+},
+"fastapi/routing.py::serialize_response": {
+"ok": true
+},
+"fastapi/routing.py::_build_response_args": {
+"ok": false,
+"error": "AttributeError: 'str' object has no attribute 'background_tasks'"
+},
+"fastapi/routing.py::_frontend_dependency_endpoint": {
+"ok": true
+},
+"fastapi/routing.py::_iter_included_route_candidates": {
+"ok": true
+},
+"fastapi/routing.py::iter_route_contexts": {
+"ok": true
+},
+"fastapi/routing.py::_iter_routes_with_context": {
+"ok": true
+},
+"fastapi/routing.py::_normalize_frontend_path": {
+"ok": true
+},
+"fastapi/routing.py::_join_frontend_paths": {
+"ok": true
+},
+"fastapi/routing.py::_frontend_path_specificity": {
+"ok": true
+},
+"fastapi/routing.py::_get_resolved_absolute_path": {
+"ok": true
+},
+"fastapi/routing.py::_resolve_frontend_check_dir": {
+"ok": true
+},
+"fastapi/routing.py::_iter_accept_media_types": {
+"ok": true
+},
+"fastapi/security/utils.py::get_authorization_scheme_param": {
+"ok": true
+},
+"fastapi/sse.py::_check_single_line": {
+"ok": true
+},
+"fastapi/sse.py::_check_event_single_line": {
+"ok": true
+},
+"fastapi/sse.py::_check_id_valid": {
+"ok": true
+},
+"fastapi/sse.py::_split_sse_lines": {
+"ok": true
+},
+"fastapi/sse.py::format_sse_event": {
+"ok": true
+},
+"fastapi/telemetry/_api.py::_get_request_telemetry": {
+"ok": true
+},
+"fastapi/telemetry/_api.py::get_telemetry_data": {
+"ok": true
+},
+"fastapi/telemetry/_api.py::_operation": {
+"ok": true
+},
+"fastapi/telemetry/_api.py::_route_selected": {
+"ok": true
+},
+"fastapi/telemetry/_api.py::_unconfigured": {
+"ok": true
+},
+"fastapi/telemetry/_asgi.py::_legacy_otel": {
+"ok": true
+},
+"fastapi/telemetry/_runtime.py::_flush": {
+"ok": true
+},
+"fastapi/telemetry/_runtime.py::_shutdown": {
+"ok": true
+},
+"fastapi/telemetry/_runtime.py::_export_endpoint": {
+"ok": true
+},
+"fastapi/telemetry/_runtime.py::_registration_provider": {
+"ok": true
+},
+"fastapi/utils.py::is_body_allowed_for_status_code": {
+"ok": true
+},
+"fastapi/utils.py::get_path_param_names": {
+"ok": true
+},
+"fastapi/utils.py::create_model_field": {
+"ok": false,
+"error": "SyntaxError: Forward reference must be an expression -- got ''"
+},
+"fastapi/utils.py::generate_operation_id_for_path": {
+"ok": true
+},
+"fastapi/utils.py::deep_dict_update": {
+"ok": true
+}
+},
+"flask": {
+"flask/cli.py::show_server_banner": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"flask/cli.py::main": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"flask/app.py::_make_timedelta": {
+"ok": true
+},
+"flask/app.py::Flask.__init_subclass__": {
+"ok": true
+},
+"flask/cli.py::prepare_import": {
+"ok": true
+},
+"flask/cli.py::locate_app": {
+"ok": true
+},
+"flask/cli.py::_path_is_ancestor": {
+"ok": true
+},
+"flask/cli.py::load_dotenv": {
+"ok": true
+},
+"flask/cli.py::shell_command": {
+"ok": false,
+"error": "SystemExit: 2"
+},
+"flask/cli.py::routes_command": {
+"ok": false,
+"error": "AttributeError: 'bool' object has no attribute 'replace'"
+},
+"flask/ctx.py::has_request_context": {
+"ok": true
+},
+"flask/ctx.py::has_app_context": {
+"ok": true
+},
+"flask/ctx.py::__getattr__": {
+"ok": false,
+"error": "AttributeError: Alice"
+},
+"flask/globals.py::__getattr__": {
+"ok": false,
+"error": "AttributeError: Alice"
+},
+"flask/helpers.py::get_debug_flag": {
+"ok": true
+},
+"flask/helpers.py::get_load_dotenv": {
+"ok": true
+},
+"flask/helpers.py::stream_with_context": {
+"ok": false,
+"error": "RuntimeError: 'stream_with_context' can only be used when a request context is active, such as in a view function."
+},
+"flask/helpers.py::make_response": {
+"ok": false,
+"error": "RuntimeError: Working outside of application context.\n\nAttempted to use functionality that expected a current application to be set. To\nsolve this, set up an app context using 'with app.app_context()'"
+},
+"flask/helpers.py::url_for": {
+"ok": false,
+"error": "RuntimeError: Working outside of application context.\n\nAttempted to use functionality that expected a current application to be set. To\nsolve this, set up an app context using 'with app.app_context()'"
+},
+"flask/helpers.py::redirect": {
+"ok": true
+},
+"flask/helpers.py::abort": {
+"ok": false,
+"error": "NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again."
+},
+"flask/helpers.py::get_template_attribute": {
+"ok": false,
+"error": "RuntimeError: Working outside of application context.\n\nAttempted to use functionality that expected a current application to be set. To\nsolve this, set up an app context using 'with app.app_context()'"
+},
+"flask/helpers.py::flash": {
+"ok": false,
+"error": "RuntimeError: Working outside of request context.\n\nAttempted to use functionality that expected an active HTTP request. See the\ndocumentation on request context for more information."
+},
+"flask/helpers.py::get_flashed_messages": {
+"ok": false,
+"error": "RuntimeError: Working outside of application context.\n\nAttempted to use functionality that expected a current application to be set. To\nsolve this, set up an app context using 'with app.app_context()'"
+},
+"flask/helpers.py::_prepare_send_file_kwargs": {
+"ok": false,
+"error": "RuntimeError: Working outside of application context.\n\nAttempted to use functionality that expected a current application to be set. To\nsolve this, set up an app context using 'with app.app_context()'"
+},
+"flask/helpers.py::send_file": {
+"ok": false,
+"error": "RuntimeError: Working outside of request context.\n\nAttempted to use functionality that expected an active HTTP request. See the\ndocumentation on request context for more information."
+},
+"flask/helpers.py::send_from_directory": {
+"ok": false,
+"error": "RuntimeError: Working outside of application context.\n\nAttempted to use functionality that expected a current application to be set. To\nsolve this, set up an app context using 'with app.app_context()'"
+},
+"flask/helpers.py::get_root_path": {
+"ok": true
+},
+"flask/helpers.py::_split_blueprint_path": {
+"ok": true
+},
+"flask/json/__init__.py::dumps": {
+"ok": true
+},
+"flask/json/__init__.py::loads": {
+"ok": false,
+"error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)"
+},
+"flask/json/__init__.py::jsonify": {
+"ok": false,
+"error": "RuntimeError: Working outside of application context.\n\nAttempted to use functionality that expected a current application to be set. To\nsolve this, set up an app context using 'with app.app_context()'"
+},
+"flask/json/provider.py::_default": {
+"ok": false,
+"error": "TypeError: Object of type str is not JSON serializable"
+},
+"flask/logging.py::wsgi_errors_stream": {
+"ok": false,
+"error": "TypeError: '_io.StringIO' object is not callable"
+},
+"flask/sansio/app.py::_make_timedelta": {
+"ok": true
+},
+"flask/sansio/scaffold.py::Scaffold._get_exc_class_and_code": {
+"ok": false,
+"error": "ValueError: '1' is not a recognized HTTP error code. Use a subclass of HTTPException with that code instead."
+},
+"flask/sansio/scaffold.py::_find_package_path": {
+"ok": true
+},
+"flask/sansio/scaffold.py::find_package": {
+"ok": true
+},
+"flask/sessions.py::_lazy_sha1": {
+"ok": true
+},
+"flask/templating.py::_default_template_ctx_processor": {
+"ok": false,
+"error": "RuntimeError: Working outside of application context.\n\nAttempted to use functionality that expected a current application to be set. To\nsolve this, set up an app context using 'with app.app_context()'"
+},
+"flask/templating.py::render_template": {
+"ok": false,
+"error": "RuntimeError: Working outside of application context.\n\nAttempted to use functionality that expected a current application to be set. To\nsolve this, set up an app context using 'with app.app_context()'"
+},
+"flask/templating.py::render_template_string": {
+"ok": false,
+"error": "RuntimeError: Working outside of application context.\n\nAttempted to use functionality that expected a current application to be set. To\nsolve this, set up an app context using 'with app.app_context()'"
+},
+"flask/templating.py::stream_template": {
+"ok": false,
+"error": "RuntimeError: Working outside of application context.\n\nAttempted to use functionality that expected a current application to be set. To\nsolve this, set up an app context using 'with app.app_context()'"
+},
+"flask/templating.py::stream_template_string": {
+"ok": false,
+"error": "RuntimeError: Working outside of application context.\n\nAttempted to use functionality that expected a current application to be set. To\nsolve this, set up an app context using 'with app.app_context()'"
+},
+"flask/testing.py::_get_werkzeug_version": {
+"ok": true
+},
+"flask/views.py::View.as_view": {
+"ok": true
+},
+"flask/views.py::MethodView.__init_subclass__": {
+"ok": true
+}
+},
+"httpx": {
+"httpx/_api.py::request": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"httpx/_api.py::stream": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"httpx/_api.py::get": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"httpx/_api.py::options": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"httpx/_api.py::head": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"httpx/_api.py::post": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"httpx/_api.py::put": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"httpx/_api.py::patch": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"httpx/_api.py::delete": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"httpx/_content.py::encode_request": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"httpx/_exceptions.py::request_context": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"httpx/_multipart.py::get_multipart_boundary_from_content_type": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"httpx/_status_codes.py::codes.get_reason_phrase": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"httpx/_status_codes.py::codes.is_server_error": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"httpx/_utils.py::get_environment_proxies": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"httpx/_config.py::create_ssl_context": {
+"ok": true
+},
+"httpx/_content.py::encode_content": {
+"ok": true
+},
+"httpx/_content.py::encode_text": {
+"ok": true
+},
+"httpx/_content.py::encode_html": {
+"ok": true
+},
+"httpx/_content.py::encode_json": {
+"ok": true
+},
+"httpx/_content.py::encode_response": {
+"ok": true
+},
+"httpx/_main.py::print_help": {
+"ok": true
+},
+"httpx/_main.py::format_response_headers": {
+"ok": false,
+"error": "AttributeError: 'str' object has no attribute 'decode'"
+},
+"httpx/_main.py::print_response_headers": {
+"ok": false,
+"error": "AttributeError: 'str' object has no attribute 'decode'"
+},
+"httpx/_main.py::trace": {
+"ok": true
+},
+"httpx/_models.py::_is_known_encoding": {
+"ok": true
+},
+"httpx/_models.py::_normalize_header_key": {
+"ok": true
+},
+"httpx/_models.py::_normalize_header_value": {
+"ok": true
+},
+"httpx/_models.py::_parse_content_type_charset": {
+"ok": true
+},
+"httpx/_models.py::_parse_header_links": {
+"ok": true
+},
+"httpx/_models.py::_obfuscate_sensitive_headers": {
+"ok": true
+},
+"httpx/_multipart.py::_format_form_param": {
+"ok": true
+},
+"httpx/_multipart.py::_guess_content_type": {
+"ok": true
+},
+"httpx/_status_codes.py::codes.__new__": {
+"ok": false,
+"error": "TypeError: Enum.__new__() missing 1 required positional argument: 'value'"
+},
+"httpx/_status_codes.py::codes.is_informational": {
+"ok": true
+},
+"httpx/_status_codes.py::codes.is_success": {
+"ok": true
+},
+"httpx/_status_codes.py::codes.is_redirect": {
+"ok": true
+},
+"httpx/_status_codes.py::codes.is_client_error": {
+"ok": true
+},
+"httpx/_status_codes.py::codes.is_error": {
+"ok": true
+},
+"httpx/_transports/asgi.py::is_running_trio": {
+"ok": true
+},
+"httpx/_transports/asgi.py::create_event": {
+"ok": true
+},
+"httpx/_transports/default.py::_load_httpcore_exceptions": {
+"ok": true
+},
+"httpx/_transports/default.py::map_httpcore_exceptions": {
+"ok": true
+},
+"httpx/_transports/wsgi.py::_skip_leading_empty_chunks": {
+"ok": true
+},
+"httpx/_urlparse.py::urlparse": {
+"ok": true
+},
+"httpx/_urlparse.py::encode_host": {
+"ok": true
+},
+"httpx/_urlparse.py::normalize_port": {
+"ok": false,
+"error": "InvalidURL: Invalid port: 'hello'"
+},
+"httpx/_urlparse.py::validate_path": {
+"ok": true
+},
+"httpx/_urlparse.py::normalize_path": {
+"ok": true
+},
+"httpx/_urlparse.py::PERCENT": {
+"ok": true
+},
+"httpx/_urlparse.py::percent_encoded": {
+"ok": true
+},
+"httpx/_urlparse.py::quote": {
+"ok": true
+},
+"httpx/_utils.py::to_bytes": {
+"ok": true
+},
+"httpx/_utils.py::to_str": {
+"ok": true
+},
+"httpx/_utils.py::unquote": {
+"ok": true
+},
+"httpx/_utils.py::peek_filelike_length": {
+"ok": true
+},
+"httpx/_utils.py::is_ipv4_hostname": {
+"ok": true
+},
+"httpx/_utils.py::is_ipv6_hostname": {
+"ok": true
+}
+},
+"pydantic": {
+"pydantic/__init__.py::__getattr__": {
+"ok": false,
+"error": "AttributeError: module 'pydantic' has no attribute 'hello'"
+},
+"pydantic/__init__.py::__dir__": {
+"ok": true
+},
+"pydantic/_internal/_config.py::ConfigWrapper.for_model": {
+"ok": true
+},
+"pydantic/_internal/_config.py::prepare_config": {
+"ok": true
+},
+"pydantic/_internal/_core_metadata.py::update_core_metadata": {
+"ok": true
+},
+"pydantic/_internal/_core_utils.py::_clean_schema_for_pretty_print": {
+"ok": true
+},
+"pydantic/_internal/_core_utils.py::pretty_print_core_schema": {
+"ok": true
+},
+"pydantic/_internal/_decorators.py::mro_for_bases": {
+"ok": true
+},
+"pydantic/_internal/_decorators.py::get_attribute_from_bases": {
+"ok": false,
+"error": "TypeError: Inconsistent hierarchy, no C3 MRO is possible"
+},
+"pydantic/_internal/_decorators.py::_serializer_info_arg": {
+"ok": true
+},
+"pydantic/_internal/_decorators.py::unwrap_wrapped_function": {
+"ok": true
+},
+"pydantic/_internal/_decorators.py::get_callable_return_type": {
+"ok": true
+},
+"pydantic/_internal/_decorators.py::ensure_property": {
+"ok": true
+},
+"pydantic/_internal/_docs_extraction.py::_dedent_source_lines": {
+"ok": true
+},
+"pydantic/_internal/_fields.py::pydantic_general_metadata": {
+"ok": true
+},
+"pydantic/_internal/_fields.py::_general_metadata_cls": {
+"ok": true
+},
+"pydantic/_internal/_fields.py::_check_protected_namespaces": {
+"ok": true
+},
+"pydantic/_internal/_fields.py::is_valid_field_name": {
+"ok": true
+},
+"pydantic/_internal/_fields.py::is_valid_privateattr_name": {
+"ok": true
+},
+"pydantic/_internal/_generate_schema.py::_is_simple_schema_type": {
+"ok": true
+},
+"pydantic/_internal/_generate_schema.py::check_decorator_fields_exist": {
+"ok": true
+},
+"pydantic/_internal/_generate_schema.py::filter_field_decorator_info_by_field": {
+"ok": true
+},
+"pydantic/_internal/_generate_schema.py::GenerateSchema.__init_subclass__": {
+"ok": true
+},
+"pydantic/_internal/_generate_schema.py::_convert_to_aliases": {
+"ok": true
+},
+"pydantic/_internal/_generate_schema.py::_extract_get_pydantic_json_schema": {
+"ok": true
+},
+"pydantic/_internal/_generics.py::_get_caller_frame_info": {
+"ok": false,
+"error": "RuntimeError: This function must be used inside another function"
+},
+"pydantic/_internal/_generics.py::iter_contained_typevars": {
+"ok": true
+},
+"pydantic/_internal/_generics.py::get_args": {
+"ok": true
+},
+"pydantic/_internal/_generics.py::get_origin": {
+"ok": true
+},
+"pydantic/_internal/_generics.py::_map_type_parameters": {
+"ok": true
+},
+"pydantic/_internal/_generics.py::get_standard_typevars_map": {
+"ok": true
+},
+"pydantic/_internal/_generics.py::replace_types": {
+"ok": true
+},
+"pydantic/_internal/_generics.py::recursively_defined_type_refs": {
+"ok": true
+},
+"pydantic/_internal/_generics.py::_union_orderings_key": {
+"ok": true
+},
+"pydantic/_internal/_git.py::have_git": {
+"ok": true
+},
+"pydantic/_internal/_import_utils.py::import_cached_base_model": {
+"ok": true
+},
+"pydantic/_internal/_import_utils.py::import_cached_field_info": {
+"ok": true
+},
+"pydantic/_internal/_known_annotated_metadata.py::as_jsonable_value": {
+"ok": true
+},
+"pydantic/_internal/_known_annotated_metadata.py::_is_grouped_metadata": {
+"ok": true
+},
+"pydantic/_internal/_known_annotated_metadata.py::expand_grouped_metadata": {
+"ok": true
+},
+"pydantic/_internal/_known_annotated_metadata.py::_get_at_to_constraint_map": {
+"ok": true
+},
+"pydantic/_internal/_known_annotated_metadata.py::collect_known_metadata": {
+"ok": true
+},
+"pydantic/_internal/_known_annotated_metadata.py::check_metadata": {
+"ok": true
+},
+"pydantic/_internal/_model_construction.py::NoInitField": {
+"ok": true
+},
+"pydantic/_internal/_model_construction.py::ModelMetaclass.__new__": {
+"ok": false,
+"error": "TypeError: super(type, obj): obj (instance of str) is not an instance or subtype of type (ModelMetaclass)."
+},
+"pydantic/_internal/_model_construction.py::ModelMetaclass.__prepare__": {
+"ok": true
+},
+"pydantic/_internal/_model_construction.py::ModelMetaclass._collect_bases_data": {
+"ok": true
+},
+"pydantic/_internal/_model_construction.py::get_model_post_init": {
+"ok": false,
+"error": "TypeError: Inconsistent hierarchy, no C3 MRO is possible"
+},
+"pydantic/_internal/_model_construction.py::inspect_namespace": {
+"ok": false,
+"error": "TypeError: can only concatenate list (not \"tuple\") to list"
+},
+"pydantic/_internal/_model_construction.py::build_lenient_weakvaluedict": {
+"ok": true
+},
+"pydantic/_internal/_model_construction.py::unpack_lenient_weakvaluedict": {
+"ok": true
+},
+"pydantic/_internal/_model_construction.py::default_ignored_types": {
+"ok": true
+},
+"pydantic/_internal/_namespace_utils.py::get_module_ns_of": {
+"ok": true
+},
+"pydantic/_internal/_repr.py::display_as_type": {
+"ok": true
+},
+"pydantic/_internal/_repr.py::_display_type_arg": {
+"ok": true
+},
+"pydantic/_internal/_type_refs.py::_args_ref": {
+"ok": true
+},
+"pydantic/_internal/_type_refs.py::any_class_type_ref": {
+"ok": false,
+"error": "AttributeError: 'str' object has no attribute '__module__'"
+},
+"pydantic/_internal/_type_refs.py::any_type_ref": {
+"ok": true
+},
+"pydantic/_internal/_typing_extra.py::is_annotated": {
+"ok": true
+},
+"pydantic/_internal/_typing_extra.py::annotated_type": {
+"ok": true
+},
+"pydantic/_internal/_typing_extra.py::unpack_type": {
+"ok": true
+},
+"pydantic/_internal/_typing_extra.py::is_classvar_annotation": {
+"ok": true
+},
+"pydantic/_internal/_typing_extra.py::is_namedtuple": {
+"ok": true
+},
+"pydantic/_internal/_typing_extra.py::is_generic_alias": {
+"ok": true
+},
+"pydantic/_internal/_typing_extra.py::parent_frame_namespace": {
+"ok": true
+},
+"pydantic/_internal/_typing_extra.py::_type_convert": {
+"ok": true
+},
+"pydantic/_internal/_typing_extra.py::safe_get_annotations": {
+"ok": false,
+"error": "TypeError: '' does not have annotations"
+},
+"pydantic/_internal/_typing_extra.py::try_eval_type": {
+"ok": false,
+"error": "SyntaxError: Forward reference must be an expression -- got ''"
+},
+"pydantic/_internal/_typing_extra.py::eval_type": {
+"ok": false,
+"error": "SyntaxError: Forward reference must be an expression -- got ''"
+},
+"pydantic/_internal/_typing_extra.py::_eval_type": {
+"ok": true
+},
+"pydantic/_internal/_utils.py::lenient_issubclass": {
+"ok": true
+},
+"pydantic/_internal/_utils.py::is_model_class": {
+"ok": true
+},
+"pydantic/_internal/_utils.py::is_valid_identifier": {
+"ok": true
+},
+"pydantic/_internal/_utils.py::update_not_none": {
+"ok": true
+},
+"pydantic/_internal/_utils.py::all_identical": {
+"ok": true
+},
+"pydantic/_internal/_utils.py::get_first_not_none": {
+"ok": true
+},
+"pydantic/_internal/_validators.py::import_string": {
+"ok": true
+},
+"pydantic/_internal/_validators.py::_import_string_logic": {
+"ok": false,
+"error": "ModuleNotFoundError: No module named '/Users/mahnazameer/msc-thesis-mahnaz/backend/sample_files/example'"
+},
+"pydantic/_internal/_validators.py::pattern_either_validator": {
+"ok": true
+},
+"pydantic/_internal/_validators.py::pattern_str_validator": {
+"ok": true
+},
+"pydantic/_internal/_validators.py::pattern_bytes_validator": {
+"ok": false,
+"error": "PydanticCustomError: Input should be a bytes pattern"
+},
+"pydantic/_internal/_validators.py::ip_v4_address_validator": {
+"ok": false,
+"error": "PydanticCustomError: Input is not a valid IPv4 address"
+},
+"pydantic/_internal/_validators.py::ip_v6_address_validator": {
+"ok": false,
+"error": "PydanticCustomError: Input is not a valid IPv6 address"
+},
+"pydantic/_internal/_validators.py::ip_v4_network_validator": {
+"ok": false,
+"error": "PydanticCustomError: Input is not a valid IPv4 network"
+},
+"pydantic/_internal/_validators.py::ip_v6_network_validator": {
+"ok": false,
+"error": "PydanticCustomError: Input is not a valid IPv6 network"
+},
+"pydantic/_internal/_validators.py::ip_v4_interface_validator": {
+"ok": false,
+"error": "PydanticCustomError: Input is not a valid IPv4 interface"
+},
+"pydantic/_internal/_validators.py::ip_v6_interface_validator": {
+"ok": false,
+"error": "PydanticCustomError: Input is not a valid IPv6 interface"
+},
+"pydantic/_internal/_validators.py::forbid_inf_nan_check": {
+"ok": false,
+"error": "TypeError: must be real number, not str"
+},
+"pydantic/_internal/_validators.py::_safe_repr": {
+"ok": true
+},
+"pydantic/_internal/_validators.py::greater_than_validator": {
+"ok": false,
+"error": "PydanticKnownError: Input should be greater than "
+},
+"pydantic/_internal/_validators.py::greater_than_or_equal_validator": {
+"ok": true
+},
+"pydantic/_internal/_validators.py::less_than_validator": {
+"ok": false,
+"error": "PydanticKnownError: Input should be less than "
+},
+"pydantic/_internal/_validators.py::less_than_or_equal_validator": {
+"ok": true
+},
+"pydantic/_internal/_validators.py::multiple_of_validator": {
+"ok": false,
+"error": "TypeError: Unable to apply constraint 'multiple_of' to supplied value "
+},
+"pydantic/_internal/_validators.py::min_length_validator": {
+"ok": false,
+"error": "TypeError: Unable to apply constraint 'min_length' to supplied value "
+},
+"pydantic/_internal/_validators.py::max_length_validator": {
+"ok": false,
+"error": "TypeError: Unable to apply constraint 'max_length' to supplied value "
+},
+"pydantic/_internal/_validators.py::_count_digits": {
+"ok": true
+},
+"pydantic/_internal/_validators.py::max_digits_validator": {
+"ok": false,
+"error": "TypeError: Unable to apply constraint 'max_digits' to supplied value "
+},
+"pydantic/_internal/_validators.py::decimal_places_validator": {
+"ok": false,
+"error": "TypeError: Unable to apply constraint 'decimal_places' to supplied value "
+},
+"pydantic/_internal/_validators.py::get_defaultdict_default_default_factory": {
+"ok": false,
+"error": "PydanticSchemaGenerationError: Unable to infer a default factory for values of type . Only float, int, str, bool, tuple, Sequence, MutableSequence, list, set, MutableSet, frozenset, Set, dict, Mapping"
+},
+"pydantic/_internal/_validators.py::validate_str_is_valid_iana_tz": {
+"ok": false,
+"error": "PydanticCustomError: invalid timezone: "
+},
+"pydantic/alias_generators.py::to_pascal": {
+"ok": true
+},
+"pydantic/alias_generators.py::to_camel": {
+"ok": true
+},
+"pydantic/alias_generators.py::to_snake": {
+"ok": true
+},
+"pydantic/config.py::with_config": {
+"ok": true
+},
+"pydantic/dataclasses.py::dataclass": {
+"ok": true
+},
+"pydantic/fields.py::FieldInfo.from_field": {
+"ok": true
+},
+"pydantic/fields.py::FieldInfo._construct": {
+"ok": true
+},
+"pydantic/fields.py::FieldInfo._collect_metadata": {
+"ok": true
+},
+"pydantic/fields.py::_infer_type_from_default": {
+"ok": true
+},
+"pydantic/fields.py::Field": {
+"ok": true
+},
+"pydantic/fields.py::PrivateAttr": {
+"ok": true
+},
+"pydantic/fields.py::computed_field": {
+"ok": true
+},
+"pydantic/functional_serializers.py::field_serializer": {
+"ok": true
+},
+"pydantic/functional_serializers.py::model_serializer": {
+"ok": true
+},
+"pydantic/functional_validators.py::field_validator": {
+"ok": true
+},
+"pydantic/functional_validators.py::model_validator": {
+"ok": true
+},
+"pydantic/json_schema.py::_DefinitionsRemapping.from_prioritized_choices": {
+"ok": true
+},
+"pydantic/json_schema.py::GenerateJsonSchema._name_required_computed_fields": {
+"ok": true
+},
+"pydantic/json_schema.py::models_json_schema": {
+"ok": true
+},
+"pydantic/json_schema.py::_repeat": {
+"ok": true
+},
+"pydantic/json_schema.py::_int_range_pattern": {
+"ok": true
+},
+"pydantic/json_schema.py::_decimal_validation_pattern": {
+"ok": true
+},
+"pydantic/json_schema.py::_decimal_serialization_pattern": {
+"ok": true
+},
+"pydantic/json_schema.py::_deduplicate_schemas": {
+"ok": true
+},
+"pydantic/json_schema.py::_get_all_json_refs": {
+"ok": true
+},
+"pydantic/main.py::BaseModel.model_construct": {
+"ok": false,
+"error": "AttributeError: __pydantic_fields__"
+},
+"pydantic/main.py::BaseModel.model_json_schema": {
+"ok": false,
+"error": "AttributeError: model_json_schema() must be called on a subclass of BaseModel, not BaseModel itself."
+},
+"pydantic/main.py::BaseModel.model_parametrized_name": {
+"ok": false,
+"error": "TypeError: Concrete names should only be generated for generic models."
+},
+"pydantic/main.py::BaseModel.model_rebuild": {
+"ok": false,
+"error": "AttributeError: __pydantic_generic_metadata__"
+},
+"pydantic/main.py::BaseModel.model_validate": {
+"ok": false,
+"error": "PydanticUserError: Pydantic models should inherit from BaseModel, BaseModel cannot be instantiated directly\n\nFor further information visit https://errors.pydantic.dev/2.15/u/base-model-instantiated"
+},
+"pydantic/main.py::BaseModel.model_validate_json": {
+"ok": false,
+"error": "PydanticUserError: Pydantic models should inherit from BaseModel, BaseModel cannot be instantiated directly\n\nFor further information visit https://errors.pydantic.dev/2.15/u/base-model-instantiated"
+},
+"pydantic/main.py::BaseModel.model_validate_strings": {
+"ok": false,
+"error": "PydanticUserError: Pydantic models should inherit from BaseModel, BaseModel cannot be instantiated directly\n\nFor further information visit https://errors.pydantic.dev/2.15/u/base-model-instantiated"
+},
+"pydantic/main.py::BaseModel.__pydantic_init_subclass__": {
+"ok": true
+},
+"pydantic/main.py::BaseModel.__pydantic_on_complete__": {
+"ok": true
+},
+"pydantic/main.py::BaseModel.__class_getitem__": {
+"ok": false,
+"error": "TypeError: Type parameters should be placed on typing.Generic, not BaseModel"
+},
+"pydantic/main.py::create_model": {
+"ok": true
+},
+"pydantic/mypy.py::plugin": {
+"ok": false,
+"error": "ModuleNotFoundError: No module named 'mypy'"
+},
+"pydantic/mypy.py::PydanticModelTransformer.is_dynamic_alias_present": {
+"ok": false,
+"error": "ModuleNotFoundError: No module named 'mypy'"
+},
+"pydantic/mypy.py::parse_toml": {
+"ok": false,
+"error": "ModuleNotFoundError: No module named 'mypy'"
+},
+"pydantic/networks.py::_BaseUrl.build": {
+"ok": true
+},
+"pydantic/networks.py::_BaseMultiHostUrl.build": {
+"ok": false,
+"error": "ValueError: expected either `host` or `hosts` to be set"
+},
+"pydantic/networks.py::import_email_validator": {
+"ok": true
+},
+"pydantic/networks.py::NameEmail._validate": {
+"ok": false,
+"error": "PydanticCustomError: value is not a valid email address: An email address must have an @-sign."
+},
+"pydantic/networks.py::_build_pretty_email_regex": {
+"ok": true
+},
+"pydantic/networks.py::validate_email": {
+"ok": true
+},
+"pydantic/plugin/_loader.py::get_plugins": {
+"ok": true
+},
+"pydantic/root_model.py::RootModel.__init_subclass__": {
+"ok": true
+},
+"pydantic/type_adapter.py::_getattr_no_parents": {
+"ok": false,
+"error": "AttributeError: name"
+},
+"pydantic/type_adapter.py::_type_has_config": {
+"ok": true
+},
+"pydantic/type_adapter.py::TypeAdapter.json_schemas": {
+"ok": true
+},
+"pydantic/types.py::conint": {
+"ok": true
+},
+"pydantic/types.py::confloat": {
+"ok": true
+},
+"pydantic/types.py::conbytes": {
+"ok": true
+},
+"pydantic/types.py::constr": {
+"ok": true
+},
+"pydantic/types.py::condecimal": {
+"ok": true
+},
+"pydantic/types.py::_check_annotated_type": {
+"ok": true
+},
+"pydantic/types.py::condate": {
+"ok": true
+},
+"pydantic/types.py::EncoderProtocol.decode": {
+"ok": true
+},
+"pydantic/types.py::EncoderProtocol.encode": {
+"ok": true
+},
+"pydantic/types.py::EncoderProtocol.get_json_format": {
+"ok": true
+},
+"pydantic/types.py::Base64Encoder.decode": {
+"ok": false,
+"error": "PydanticCustomError: Base64 decoding error: 'Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4'"
+},
+"pydantic/types.py::Base64Encoder.encode": {
+"ok": false,
+"error": "TypeError: a bytes-like object is required, not 'str'"
+},
+"pydantic/types.py::Base64Encoder.get_json_format": {
+"ok": true
+},
+"pydantic/types.py::Base64UrlEncoder.decode": {
+"ok": false,
+"error": "PydanticCustomError: Base64 decoding error: 'Invalid base64-encoded string: number of data characters (5) cannot be 1 more than a multiple of 4'"
+},
+"pydantic/types.py::Base64UrlEncoder.encode": {
+"ok": false,
+"error": "TypeError: a bytes-like object is required, not 'str'"
+},
+"pydantic/types.py::Base64UrlEncoder.get_json_format": {
+"ok": true
+},
+"pydantic/types.py::_get_type_name": {
+"ok": true
+},
+"pydantic/validate_call_decorator.py::_check_function_type": {
+"ok": false,
+"error": "PydanticUserError: Unable to validate : `validate_call` should be applied to one of the following: function, method, partial, or lambda\n\nFor further information visit https://errors.pydantic.dev/2.15/"
+},
+"pydantic/validate_call_decorator.py::validate_call": {
+"ok": true
+},
+"pydantic/version.py::version_short": {
+"ok": true
+},
+"pydantic/version.py::version_info": {
+"ok": true
+},
+"pydantic/version.py::check_pydantic_core_version": {
+"ok": true
+},
+"pydantic/version.py::_ensure_pydantic_core_version": {
+"ok": true
+},
+"pydantic/version.py::parse_mypy_version": {
+"ok": true
+}
+},
+"requests": {
+"requests/help.py::main": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"requests/models.py::PreparedRequest._get_idna_encoded_host": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"requests/utils.py::atomic_open": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"requests/utils.py::get_encodings_from_content": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"requests/utils.py::unquote_unreserved": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"requests/utils.py::get_environ_proxies": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"requests/utils.py::get_auth_from_url": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"requests/__init__.py::check_compatibility": {
+"ok": false,
+"error": "ValueError: not enough values to unpack (expected 3, got 1)"
+},
+"requests/__init__.py::_check_cryptography": {
+"ok": true
+},
+"requests/_internal_utils.py::to_native_string": {
+"ok": true
+},
+"requests/_internal_utils.py::unicode_is_ascii": {
+"ok": true
+},
+"requests/_types.py::has_read": {
+"ok": true
+},
+"requests/auth.py::_basic_auth_str": {
+"ok": true
+},
+"requests/compat.py::_resolve_char_detection": {
+"ok": true
+},
+"requests/cookies.py::create_cookie": {
+"ok": true
+},
+"requests/cookies.py::cookiejar_from_dict": {
+"ok": true
+},
+"requests/help.py::_implementation": {
+"ok": true
+},
+"requests/help.py::info": {
+"ok": true
+},
+"requests/hooks.py::default_hooks": {
+"ok": true
+},
+"requests/sessions.py::merge_setting": {
+"ok": true
+},
+"requests/sessions.py::session": {
+"ok": true
+},
+"requests/status_codes.py::_init": {
+"ok": true
+},
+"requests/utils.py::dict_to_sequence": {
+"ok": true
+},
+"requests/utils.py::super_len": {
+"ok": true
+},
+"requests/utils.py::guess_filename": {
+"ok": true
+},
+"requests/utils.py::extract_zipped_paths": {
+"ok": true
+},
+"requests/utils.py::from_key_val_list": {
+"ok": true
+},
+"requests/utils.py::to_key_val_list": {
+"ok": true
+},
+"requests/utils.py::parse_list_header": {
+"ok": true
+},
+"requests/utils.py::parse_dict_header": {
+"ok": true
+},
+"requests/utils.py::unquote_header_value": {
+"ok": true
+},
+"requests/utils.py::_parse_content_type_header": {
+"ok": true
+},
+"requests/utils.py::iter_slices": {
+"ok": true
+},
+"requests/utils.py::requote_uri": {
+"ok": true
+},
+"requests/utils.py::address_in_network": {
+"ok": true
+},
+"requests/utils.py::dotted_netmask": {
+"ok": true
+},
+"requests/utils.py::is_ipv4_address": {
+"ok": true
+},
+"requests/utils.py::is_valid_cidr": {
+"ok": true
+},
+"requests/utils.py::set_environ": {
+"ok": true
+},
+"requests/utils.py::should_bypass_proxies": {
+"ok": true
+},
+"requests/utils.py::select_proxy": {
+"ok": true
+},
+"requests/utils.py::default_user_agent": {
+"ok": true
+},
+"requests/utils.py::default_headers": {
+"ok": true
+},
+"requests/utils.py::parse_header_links": {
+"ok": true
+},
+"requests/utils.py::guess_json_utf": {
+"ok": false,
+"error": "TypeError: count() argument 1 must be str, not bytes"
+},
+"requests/utils.py::prepend_scheme_if_needed": {
+"ok": true
+},
+"requests/utils.py::check_header_validity": {
+"ok": false,
+"error": "ValueError: not enough values to unpack (expected 2, got 0)"
+},
+"requests/utils.py::_validate_header_part": {
+"ok": true
+},
+"requests/utils.py::urldefragauth": {
+"ok": true
+}
+},
+"rich": {
+"rich/control.py::Control.move": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"rich/control.py::Control.move_to_column": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"rich/control.py::Control.move_to": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"rich/control.py::Control.clear": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"rich/pretty.py::install": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"rich/progress.py::open": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"rich/prompt.py::PromptBase.ask": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"rich/segment.py::Segment.remove_color": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"rich/traceback.py::install": {
+"ok": false,
+"error": "skipped: could open programs, change files or use the internet"
+},
+"rich/__init__.py::get_console": {
+"ok": true
+},
+"rich/__init__.py::reconfigure": {
+"ok": true
+},
+"rich/__init__.py::print": {
+"ok": true
+},
+"rich/__init__.py::print_json": {
+"ok": true
+},
+"rich/__init__.py::inspect": {
+"ok": true
+},
+"rich/__main__.py::make_test_card": {
+"ok": true
+},
+"rich/_emoji_replace.py::_emoji_replace": {
+"ok": true
+},
+"rich/_extension.py::load_ipython_extension": {
+"ok": true
+},
+"rich/_inspect.py::_first_paragraph": {
+"ok": true
+},
+"rich/_inspect.py::get_object_types_mro": {
+"ok": true
+},
+"rich/_inspect.py::get_object_types_mro_as_strings": {
+"ok": true
+},
+"rich/_inspect.py::is_object_one_of_types": {
+"ok": true
+},
+"rich/_loop.py::loop_first": {
+"ok": true
+},
+"rich/_loop.py::loop_last": {
+"ok": true
+},
+"rich/_loop.py::loop_first_last": {
+"ok": true
+},
+"rich/_pick.py::pick_bool": {
+"ok": true
+},
+"rich/_ratio.py::ratio_resolve": {
+"ok": true
+},
+"rich/_ratio.py::ratio_reduce": {
+"ok": true
+},
+"rich/_ratio.py::ratio_distribute": {
+"ok": true
+},
+"rich/_timer.py::timer": {
+"ok": true
+},
+"rich/_unicode_data/__init__.py::_parse_version": {
+"ok": true
+},
+"rich/_unicode_data/__init__.py::load": {
+"ok": true
+},
+"rich/_win32_console.py::GetStdHandle": {
+"ok": false,
+"error": "ImportError: rich._win32_console can only be imported on Windows"
+},
+"rich/_win32_console.py::SetConsoleTitle": {
+"ok": false,
+"error": "ImportError: rich._win32_console can only be imported on Windows"
+},
+"rich/_wrap.py::words": {
+"ok": true
+},
+"rich/_wrap.py::divide_line": {
+"ok": true
+},
+"rich/ansi.py::_ansi_tokenize": {
+"ok": true
+},
+"rich/cells.py::get_character_cell_size": {
+"ok": true
+},
+"rich/cells.py::cached_cell_len": {
+"ok": true
+},
+"rich/cells.py::cell_len": {
+"ok": true
+},
+"rich/cells.py::_cell_len": {
+"ok": true
+},
+"rich/cells.py::split_graphemes": {
+"ok": true
+},
+"rich/cells.py::_split_text": {
+"ok": true
+},
+"rich/cells.py::split_text": {
+"ok": true
+},
+"rich/cells.py::set_cell_size": {
+"ok": true
+},
+"rich/cells.py::chop_cells": {
+"ok": true
+},
+"rich/color.py::Color.from_ansi": {
+"ok": true
+},
+"rich/color.py::Color.from_rgb": {
+"ok": true
+},
+"rich/color.py::Color.default": {
+"ok": true
+},
+"rich/color.py::Color.parse": {
+"ok": true
+},
+"rich/color.py::parse_rgb_hex": {
+"ok": true
+},
+"rich/console.py::group": {
+"ok": true
+},
+"rich/console.py::_is_jupyter": {
+"ok": true
+},
+"rich/console.py::get_windows_console_features": {
+"ok": true
+},
+"rich/console.py::detect_legacy_windows": {
+"ok": true
+},
+"rich/console.py::Console._caller_frame_info": {
+"ok": false,
+"error": "AssertionError: "
+},
+"rich/control.py::Control.bell": {
+"ok": true
+},
+"rich/control.py::Control.home": {
+"ok": true
+},
+"rich/control.py::Control.show_cursor": {
+"ok": true
+},
+"rich/control.py::Control.alt_screen": {
+"ok": true
+},
+"rich/control.py::Control.title": {
+"ok": true
+},
+"rich/control.py::strip_control_codes": {
+"ok": true
+},
+"rich/control.py::escape_control_codes": {
+"ok": true
+},
+"rich/diagnose.py::report": {
+"ok": true
+},
+"rich/emoji.py::Emoji.replace": {
+"ok": true
+},
+"rich/filesize.py::_to_str": {
+"ok": true
+},
+"rich/filesize.py::pick_unit_and_suffix": {
+"ok": true
+},
+"rich/filesize.py::decimal": {
+"ok": true
+},
+"rich/highlighter.py::_combine_regex": {
+"ok": true
+},
+"rich/json.py::JSON.from_data": {
+"ok": true
+},
+"rich/jupyter.py::_render_segments": {
+"ok": true
+},
+"rich/jupyter.py::display": {
+"ok": true
+},
+"rich/jupyter.py::print": {
+"ok": true
+},
+"rich/markup.py::escape": {
+"ok": true
+},
+"rich/markup.py::_parse": {
+"ok": true
+},
+"rich/markup.py::render": {
+"ok": true
+},
+"rich/pretty.py::_is_attr_object": {
+"ok": true
+},
+"rich/pretty.py::_get_attr_fields": {
+"ok": false,
+"error": "NotAnAttrsClassError: <class 'str'> is not an attrs-decorated class."
+},
+"rich/pretty.py::_is_dataclass_repr": {
+"ok": true
+},
+"rich/pretty.py::_has_default_namedtuple_repr": {
+"ok": true
+},
+"rich/pretty.py::_ipy_display_hook": {
+"ok": true
+},
+"rich/pretty.py::_safe_isinstance": {
+"ok": true
+},
+"rich/pretty.py::is_expandable": {
+"ok": true
+},
+"rich/pretty.py::_is_namedtuple": {
+"ok": true
+},
+"rich/pretty.py::traverse": {
+"ok": true
+},
+"rich/pretty.py::pretty_repr": {
+"ok": true
+},
+"rich/pretty.py::pprint": {
+"ok": true
+},
+"rich/progress.py::track": {
+"ok": true
+},
+"rich/progress.py::TaskProgressColumn.render_speed": {
+"ok": true
+},
+"rich/progress.py::Progress.get_default_columns": {
+"ok": true
+},
+"rich/protocol.py::is_renderable": {
+"ok": true
+},
+"rich/protocol.py::rich_cast": {
+"ok": true
+},
+"rich/repr.py::auto": {
+"ok": true
+},
+"rich/repr.py::rich_repr": {
+"ok": true
+},
+"rich/scope.py::render_scope": {
+"ok": true
+},
+"rich/segment.py::Segment.line": {
+"ok": true
+},
+"rich/segment.py::Segment.apply_style": {
+"ok": true
+},
+"rich/segment.py::Segment.filter_control": {
+"ok": true
+},
+"rich/segment.py::Segment.split_lines": {
+"ok": true
+},
+"rich/segment.py::Segment.split_lines_terminator": {
+"ok": true
+},
+"rich/segment.py::Segment.split_and_crop_lines": {
+"ok": true
+},
+"rich/segment.py::Segment.adjust_line_length": {
+"ok": true
+},
+"rich/segment.py::Segment.get_line_length": {
+"ok": true
+},
+"rich/segment.py::Segment.get_shape": {
+"ok": true
+},
+"rich/segment.py::Segment.set_shape": {
+"ok": true
+},
+"rich/segment.py::Segment.simplify": {
+"ok": true
+},
+"rich/segment.py::Segment.strip_links": {
+"ok": true
+},
+"rich/segment.py::Segment.strip_styles": {
+"ok": true
+},
+"rich/segment.py::Segment.divide": {
+"ok": true
+},
+"rich/style.py::Style.null": {
+"ok": true
+},
+"rich/style.py::Style.from_color": {
+"ok": true
+},
+"rich/style.py::Style.from_meta": {
+"ok": true
+},
+"rich/style.py::Style.on": {
+"ok": true
+},
+"rich/style.py::Style.normalize": {
+"ok": true
+},
+"rich/style.py::Style.pick_first": {
+"ok": false,
+"error": "ValueError: expected at least one non-None style"
+},
+"rich/style.py::Style.parse": {
+"ok": true
+},
+"rich/style.py::Style.combine": {
+"ok": false,
+"error": "StopIteration: "
+},
+"rich/style.py::Style.chain": {
+"ok": false,
+"error": "StopIteration: "
+},
+"rich/syntax.py::Syntax.get_theme": {
+"ok": true
+},
+"rich/syntax.py::Syntax.from_path": {
+"ok": true
+},
+"rich/syntax.py::Syntax.guess_lexer": {
+"ok": true
+},
+"rich/table.py::Table.grid": {
+"ok": true
+},
+"rich/table.py::Table._collapse_widths": {
+"ok": true
+},
+"rich/text.py::Text.from_markup": {
+"ok": true
+},
+"rich/text.py::Text.from_ansi": {
+"ok": true
+},
+"rich/text.py::Text.styled": {
+"ok": true
+},
+"rich/text.py::Text.assemble": {
+"ok": true
+},
+"rich/theme.py::Theme.read": {
+"ok": true
+},
+"rich/traceback.py::Traceback._guess_lexer": {
+"ok": true
+}
+}
+}
+}

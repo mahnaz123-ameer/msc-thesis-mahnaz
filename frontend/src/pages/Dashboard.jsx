@@ -1,7 +1,7 @@
 import React from 'react'
 
 const STAGES = [
-  { n: '01', title: 'AI Test Generation',      desc: 'GPT-4 / Copilot generates unit tests for your Python functions automatically.', icon: '🤖', color: 'text-blue-400',   border: 'border-blue-800/50' },
+  { n: '01', title: 'AI Test Generation',      desc: 'ChatGPT, Claude and Gemini generate unit tests for your Python functions with the same standard prompt.', icon: '🤖', color: 'text-blue-400',   border: 'border-blue-800/50' },
   { n: '02', title: 'AST Redundancy Detection', desc: 'Parse tests into AST trees, compare execution paths, remove semantic duplicates.', icon: '🌳', color: 'text-green-400',  border: 'border-green-800/50' },
   { n: '03', title: 'Mutation Validation',      desc: 'Inject fake bugs, check which surviving tests catch them, remove weak tests.', icon: '☣',  color: 'text-yellow-400', border: 'border-yellow-800/50' },
   { n: '04', title: 'Final Suite Selection',    desc: 'Output a smaller, stronger test suite with preserved fault-detection capability.', icon: '✅', color: 'text-purple-400', border: 'border-purple-800/50' },

@@ -25,7 +25,7 @@ from typing import Any, Dict, List, Optional
 
 _BOOL_PREFIXES = ("is_", "has_", "can_", "should_", "allow_", "include_", "use_", "enable_")
 _NUMBER_WORDS = {
-    "amount": 1000, "price": 250, "cost": 250, "fee": 50, "fare": 120, "salary": 50000,
+    "amount": 1000, "deposit": 1000, "withdrawal": 500, "price": 250, "cost": 250, "fee": 50, "fare": 120, "salary": 50000,
     "balance": 5000, "income": 60000, "monthly_income": 60000, "debt": 1000, "principal": 10000,
     "rate": 5.5, "percent": 10, "percentage": 10, "discount": 10, "tax": 5,
     "score": 85, "marks": 85, "credit_score": 720, "rating": 4.5, "gpa": 3.5, "cgpa": 3.5,
@@ -55,6 +55,18 @@ _STRING_WORDS = {
     "path": "/tmp/example.txt", "s": "hello world", "string": "hello world", "value": "hello",
     "slot": "10:00", "time_slot": "10:00", "shift": "morning", "day": "Monday", "gender": "female",
     "blood_group": "A+", "priority": "normal", "vehicle_type": "car", "plate": "DHA-1234",
+    # common in libraries
+    "encoding": "utf-8", "charset": "utf-8", "errors": "strict", "scheme": "https", "host": "example.com",
+    "hostname": "example.com", "domain": "example.com", "uri": "https://example.com/path?q=1",
+    "href": "https://example.com", "endpoint": "index", "header": "Content-Type", "content_type": "application/json",
+    "mimetype": "application/json", "filename": "example.txt", "file_name": "example.txt", "dirname": "/tmp",
+    "prefix": "pre_", "suffix": "_post", "sep": ",", "separator": ",", "delimiter": ",", "key": "key1",
+    "color": "red", "style": "bold red", "markup": "[bold]Hello[/bold]", "tz": "UTC", "timezone": "UTC",
+    "locale": "en-us", "fmt": "YYYY-MM-DD", "format": "YYYY-MM-DD", "version": "1.0.0", "src": "x = 1\n",
+    "source": "x = 1\n", "src_contents": "x = 1\n", "code": "x = 1", "pattern": "^a.*", "regex": "^a.*",
+    "alias": "my_alias", "field_name": "my_field", "attr": "name", "attribute": "name", "identifier": "my_name",
+    "label": "Label", "html": "<p>Hello</p>", "json_data": "{\"a\": 1}", "data": "hello", "body": "hello",
+    "word": "hello", "line": "hello world", "prog_name": "app", "envvar": "MY_VAR", "option": "--name",
 }
 
 # unannotated names that are (almost) always Python objects, not data
@@ -131,6 +143,13 @@ class _Usage:
         self.key_name: Optional[str] = None        # name of the key variable (for labels/examples)
         self.choices: List[Any] = []
         self.tuple_size: int = 0
+        self.key_presence: Optional[str] = None    # "present" / "absent": must the key param be in this dict?
+        # learned from error guards (`if <cond>: return error`) -> values that take the normal path
+        self.good_bool: Optional[bool] = None
+        self.avoid: List[Any] = []
+        self.prefer: List[Any] = []
+        self.lo: Optional[float] = None
+        self.hi: Optional[float] = None
 
     def vote(self, kind: str, weight: int = 1):
         self.votes[kind] = self.votes.get(kind, 0) + weight
@@ -145,6 +164,16 @@ class _Usage:
 
 
 def _merge(dst: _Usage, src: _Usage, mapping: Dict[str, str], depth: int = 0):
+    if src.key_presence and not dst.key_presence and src.key_param in mapping:
+        dst.key_presence = src.key_presence
+    if dst.good_bool is None:
+        dst.good_bool = src.good_bool
+    dst.avoid += [v for v in src.avoid if v not in dst.avoid]
+    dst.prefer += [v for v in src.prefer if v not in dst.prefer]
+    if src.lo is not None:
+        dst.lo = src.lo if dst.lo is None else max(dst.lo, src.lo)
+    if src.hi is not None:
+        dst.hi = src.hi if dst.hi is None else min(dst.hi, src.hi)
     if src.key_name and not dst.key_name:
         dst.key_name = src.key_name
     if src.key_param and not dst.key_param and src.key_param in mapping:
@@ -397,18 +426,49 @@ class _Analyzer:
 
         if isinstance(parent, (ast.If, ast.While, ast.IfExp)) and parent.test is node:
             u.vote("bool_ctx", 1)
+            if self._is_guard(node) and u.good_bool is None:
+                u.good_bool = False          # `if x: return error`  -> x should be false
             return
         if isinstance(parent, ast.UnaryOp) and isinstance(parent.op, ast.Not):
             u.vote("bool_ctx", 1)
+            if self._is_guard(parent) and u.good_bool is None:
+                u.good_bool = True           # `if not x: return error` -> x should be true
             return
         if isinstance(parent, ast.BoolOp):
             u.vote("bool_ctx", 1)
+            if isinstance(parent.op, ast.Or) and self._is_guard(node) and u.good_bool is None:
+                u.good_bool = False
             return
         if isinstance(parent, ast.comprehension) and node in parent.ifs:
             u.vote("bool_ctx", 1)
             return
 
         # stored into another record: record["x"] = param  -> nothing to learn
+
+    def _is_guard(self, expr: ast.AST) -> bool:
+        """Is `expr` (part of) the test of an `if` that immediately returns/raises?
+        Climbs through `or` (any part true -> error) but not `and`."""
+        node = expr
+        parent = self.parents.get(node)
+        while isinstance(parent, ast.BoolOp) and isinstance(parent.op, ast.Or):
+            node, parent = parent, self.parents.get(parent)
+        return isinstance(parent, ast.If) and parent.test is node and bool(parent.body) \
+            and isinstance(parent.body[0], (ast.Return, ast.Raise))
+
+    @staticmethod
+    def _bound(u: _Usage, op: ast.cmpop, c: float, value_on_left: bool):
+        """Error guard `value <op> c` -> keep the example on the other side."""
+        if not value_on_left:   # c <op> value  ->  flip
+            op = {ast.Lt: ast.Gt(), ast.Gt: ast.Lt(), ast.LtE: ast.GtE(), ast.GtE: ast.LtE()}.get(type(op), op)
+        step = 1 if isinstance(c, int) else 0.01
+        if isinstance(op, ast.Lt):        # error if v < c   -> v >= c
+            u.lo = c if u.lo is None else max(u.lo, c)
+        elif isinstance(op, ast.LtE):     # error if v <= c  -> v > c
+            u.lo = c + step if u.lo is None else max(u.lo, c + step)
+        elif isinstance(op, ast.Gt):      # error if v > c   -> v <= c
+            u.hi = c if u.hi is None else min(u.hi, c)
+        elif isinstance(op, ast.GtE):     # error if v >= c  -> v < c
+            u.hi = c - step if u.hi is None else min(u.hi, c - step)
 
     def _vote_constant(self, u: _Usage, value: Any, weight: int):
         if isinstance(value, bool):
@@ -444,6 +504,11 @@ class _Analyzer:
                                 u.choices.append(c)
                     else:
                         coll = self._expr_usage(other)
+                        if coll is not None and isinstance(node, ast.Name) and node.id in self.params \
+                                and coll.key_presence is None and self._is_guard(cmp):
+                            # `if id in coll: return error`     -> id must be new
+                            # `if id not in coll: return error` -> id must already exist
+                            coll.key_presence = "absent" if isinstance(op, ast.In) else "present"
                         if coll is not None and isinstance(node, ast.Name):
                             coll.key_name = coll.key_name or node.id
                             if coll.key_param is None and node.id in self.params:
@@ -458,7 +523,14 @@ class _Analyzer:
                 continue
             if isinstance(op, (ast.Is, ast.IsNot)):
                 continue
+            guard = self._is_guard(cmp)
             if isinstance(other, ast.Constant):
+                if guard and isinstance(op, ast.Eq) and other.value not in u.avoid:
+                    u.avoid.append(other.value)       # `if s == "closed": return error`
+                if guard and isinstance(op, ast.NotEq) and other.value not in u.prefer:
+                    u.prefer.append(other.value)      # `if s != "active": return error`
+                if guard and isinstance(other.value, (int, float)) and not isinstance(other.value, bool):
+                    self._bound(u, op, other.value, node is left)
                 if isinstance(op, (ast.Eq, ast.NotEq)):
                     self._vote_constant(u, other.value, 3)
                     if isinstance(other.value, str) and other.value not in u.choices:
@@ -501,9 +573,28 @@ def _decide(u: _Usage, name: str) -> str:
 
 
 def _example(u: _Usage, name: str, kind: str, examples: Dict[str, Any], depth: int = 0) -> Any:
+    value = _example_raw(u, name, kind, examples, depth)
+    if kind == "bool" and u.good_bool is not None:
+        return u.good_bool
+    if kind == "number" and isinstance(value, (int, float)) and not isinstance(value, bool):
+        if u.lo is not None and value < u.lo:
+            value = u.lo
+        if u.hi is not None and value > u.hi:
+            value = u.hi if u.lo is None or u.hi >= u.lo else u.lo
+    return value
+
+
+def _example_raw(u: _Usage, name: str, kind: str, examples: Dict[str, Any], depth: int = 0) -> Any:
+    if u.prefer:
+        return u.prefer[0]
     if u.choices:
-        usable = [c for c in u.choices if not (isinstance(c, str) and c.lower() in _TERMINAL_STATES)]
-        return (usable or u.choices)[0]
+        usable = [c for c in u.choices if c not in u.avoid
+                  and not (isinstance(c, str) and c.lower() in _TERMINAL_STATES)]
+        if usable:
+            return usable[0]
+        if not u.avoid and kind != "string":
+            return u.choices[0]
+        # every known value leads to an error -> fall through to a neutral value
     if kind == "number":
         n = _number_from_name(name)
         return n if n is not None else 10
@@ -540,8 +631,10 @@ def _example(u: _Usage, name: str, kind: str, examples: Dict[str, Any], depth: i
                 key = _id_example(item_name + "_id")
             else:
                 key = "key1"
+        if u.key_presence == "absent":
+            key = _other_key(str(key))   # the id being added must not exist yet
         if item_kind == "any":
-            return {}
+            return {str(key): {}} if u.key_presence == "present" else {}
         return {str(key): _example(item, item_name, item_kind, examples, depth + 1)}
     if kind == "list":
         item = u.items or _Usage()
@@ -562,6 +655,13 @@ def _example(u: _Usage, name: str, kind: str, examples: Dict[str, Any], depth: i
             return [ex, ex * 2 if isinstance(ex, (int, float)) else ex, ex]
         return [ex]
     return None
+
+
+def _other_key(key: str) -> str:
+    m = re.match(r"^(.*?)(\d+)$", key)
+    if m:
+        return f"{m.group(1)}{int(m.group(2)) + 1:0{len(m.group(2))}d}"
+    return key + "2"
 
 
 def _singular(name: str) -> str:
@@ -773,6 +873,12 @@ def param_hints(func: ast.AST, skip_first: bool = False,
             info.update(type="dict", label="extra keyword values (JSON object)", example={}, source="signature")
         elif arg.annotation is not None:
             t, ex, choices, ok = _from_annotation(arg.annotation)
+            if t == "string" and not choices and (name in _STRING_WORDS or name.endswith("_id")):
+                ex = _example(_Usage(), name, "string", examples)
+            elif t == "number" and _number_from_name(name) is not None and "int" not in (info["annotation"] or "float"):
+                ex = _number_from_name(name)
+            elif t == "number" and _number_from_name(name) is not None:
+                ex = int(_number_from_name(name))
             if has_lit and (lit is not None or ex is None):
                 ex = lit
             info.update(type=t, label=info["annotation"], example=ex, choices=choices,
@@ -817,7 +923,77 @@ def param_hints(func: ast.AST, skip_first: bool = False,
             info["label"] = _describe(u, name, info["type"])
         info["example_json"] = json.dumps(info["example"], ensure_ascii=False) \
             if info["json_ok"] and info["example"] is not None or info["type"] == "null" else ""
+        # a real Python object (file, class, callback...) can't be typed: leave it empty
+        info["typeable"] = info["type"] not in ("object",) and info["json_ok"]
+        info["suggestions"] = _suggestions(info, usage[name])
     return [decided[e[0].arg] for e in entries]
+
+
+# ─── Suggestion list (the ▾ dropdown under each input) ───────
+
+_GENERIC = {
+    "bool":   [(True, "yes"), (False, "no")],
+    "number": [(0, "zero"), (1, "one"), (10, ""), (100, ""), (-1, "negative")],
+    "string": [("hello", ""), ("", "empty text")],
+    "list":   [([], "empty list"), ([1, 2, 3], "list of numbers"), (["a", "b"], "list of texts")],
+    "dict":   [({}, "empty dictionary"), ({"key": "value"}, "")],
+    "record": [({}, "empty dictionary")],
+}
+
+
+def _suggestions(info: Dict[str, Any], u: "_Usage") -> List[Dict[str, str]]:
+    """Values the user can pick from: allowed values, example, default, then common values."""
+    if not info["typeable"] or info["kind"] in ("var_keyword",):
+        return []
+    out: List[Dict[str, str]] = []
+    seen = set()
+
+    def add(value: Any, note: str):
+        try:
+            j = json.dumps(value, ensure_ascii=False)
+        except (TypeError, ValueError):
+            return
+        if j not in seen and len(out) < 10:
+            seen.add(j)
+            out.append({"value": j, "note": note})
+
+    for c in info.get("choices") or []:
+        add(c, "allowed value")
+    if info.get("example") is not None:
+        add(info["example"], "example")
+    if info.get("default") is not None:
+        try:
+            add(ast.literal_eval(info["default"]), "default")
+        except Exception:
+            pass
+    ann = info.get("annotation") or ""
+    if "None" in ann or "Optional" in ann:
+        add(None, "nothing (None)")
+    kind = info["type"]
+    if kind == "list" and info["kind"] == "var_positional":
+        add([], "nothing extra")
+        add(["hello"], "one value")
+        add(["hello", "world"], "two values")
+    if kind == "string" and not info.get("choices"):
+        for word, val in _STRING_WORDS.items():
+            if info["name"] == word or info["name"].endswith("_" + word):
+                add(val, "")
+                break
+    if kind == "number":
+        n = _number_from_name(info["name"])
+        if n is not None:
+            add(n, "")
+    # generic values only when we know nothing more specific
+    structured = info["source"] != "type hint" and kind in ("list", "dict", "record") \
+        and info.get("label") not in (None, "A list", "A dictionary", "list", "dict")
+    if info.get("choices") or (kind == "string" and out):
+        return out
+    if structured:
+        add({} if kind in ("dict", "record") else [], "empty")
+        return out
+    for value, note in _GENERIC.get(kind, []):
+        add(value, note)
+    return out
 
 
 def _kind_of_value(v: Any) -> str:

@@ -1,0 +1,19 @@
+{
+ "tool": "claude",
+ "tool_name": "Claude",
+ "source": "pasted",
+ "model": null,
+ "saved_at": "2026-11-22 00:47:22",
+ "test_functions": 30,
+ "syntax_ok": true,
+ "run": {
+  "ran_at": "2026-11-22 00:47:23",
+  "total": 30,
+  "passed": 30,
+  "failed": 0,
+  "errors": 0,
+  "skipped": 0,
+  "could_run": true,
+  "output": "..............................                                           [100%]\n30 passed in 0.02s\n"
+ }
+}

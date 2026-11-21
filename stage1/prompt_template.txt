@@ -1,0 +1,15 @@
+You are given a Python function from the project "{project_name}".
+
+Write a complete pytest unit test file for this function.
+
+Rules:
+- Import the function with exactly this line: {import_line}
+- Use pytest. Write each test as a separate function whose name starts with test_.
+- Cover normal cases, edge cases and invalid inputs.
+- Do not use the network, real files, or any library other than pytest and the Python standard library.
+- Return only the Python code of the test file, in one code block.
+
+Function (module {module}):
+```python
+{source}
+```

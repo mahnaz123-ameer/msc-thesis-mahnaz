@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { getProjects, getFunctions, runFunction } from '../api'
 
 const EXAMPLES = [
@@ -9,6 +9,165 @@ const EXAMPLES = [
   { label: 'calculate_bed_charge', hint: '["private", 5]',              project: '03_hospital_management',   file: 'billing.py',      fn: 'calculate_bed_charge' },
   { label: 'apply_discount',       hint: '[{}, "P1", 20]',              project: '04_ecommerce_system',      file: 'product.py',      fn: 'apply_discount' },
 ]
+
+// ─── Input help ──────────────────────────────────────────────
+const TYPE_WORD = { string: 'text', number: 'number', bool: 'true or false', list: 'list',
+                    dict: 'dictionary', record: 'dictionary', any: 'any value' }
+
+// Example value as it should appear in the box (text without quotes)
+const exampleText = (p) => {
+  if (!p.example_json) return ''
+  try { const v = JSON.parse(p.example_json); if (p.type === 'string' && typeof v === 'string') return v } catch {}
+  return p.example_json
+}
+
+// Short help line shown under each input
+const hintFor = (p) => {
+  if (p.typeable === false) {
+    return `needs a real Python object (${p.annotation || 'object'})` +
+      (p.required ? '' : ' — leave empty, the default is used')
+  }
+  const parts = [TYPE_WORD[p.type] || p.type]
+  if (p.label && !['text', 'number', 'bool', 'any value'].includes(p.label) && p.label !== p.annotation) parts.push(p.label)
+  if (p.choices?.length) parts.push('one of: ' + p.choices.join(', '))
+  if (!p.required) parts.push(p.default != null ? `optional, leave empty for default ${p.default}` : 'optional')
+  if (p.source === 'library tests') parts.push("example from the library's own tests")
+  return parts.join(' — ')
+}
+
+// Turn the boxes into positional args + keyword args
+const buildCall = (params, values) => {
+  const args = [], kwargs = {}
+  let skipped = false
+  params.forEach((p, i) => {
+    const raw = p.type === 'string' ? (values[i] ?? '') : (values[i] ?? '').trim()
+    const parse = (v) => { try { return JSON.parse(v) } catch { return v } }
+    if (p.kind === 'var_positional') { if (raw) { const v = parse(raw); if (Array.isArray(v)) args.push(...v) } return }
+    if (p.kind === 'var_keyword') { if (raw) { const v = parse(raw); if (v && typeof v === 'object') Object.assign(kwargs, v) } return }
+    if (p.typeable === false || (raw === '' && !p.required)) { skipped = true; return }
+    const v = p.type === 'string' ? (raw.startsWith('"') ? parse(raw) : raw) : parse(raw)
+    if (p.kind === 'keyword_only' || skipped) kwargs[p.name] = v
+    else args.push(v)
+  })
+  return { args, kwargs }
+}
+
+// "What it does" box: summary, what you get back, possible results, errors
+function About({ fn }) {
+  const a = fn.about || {}
+  const okCount = (a.outcomes || []).filter(o => o.ok === true).length
+  return (
+    <div className="mt-3 rounded-lg border border-border bg-slate-900/40 p-3 space-y-2">
+      <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">What it does</div>
+      <p className="text-sm text-slate-200 leading-relaxed">
+        {a.summary || 'No description available for this function.'}
+      </p>
+      {a.returns && (
+        <p className="text-xs text-slate-400"><span className="text-slate-500">You get back:</span> {a.returns}</p>
+      )}
+      {a.outcomes?.length > 0 && (
+        <div>
+          <div className="text-xs text-slate-500 mb-1">
+            Possible results ({okCount} success, {a.outcomes.length - okCount} {a.outcomes.some(o => o.ok === null) ? 'other' : 'refusal'}):
+          </div>
+          <ul className="space-y-0.5">
+            {a.outcomes.map((o, i) => (
+              <li key={i} className="text-xs font-mono flex gap-2">
+                <span>{o.ok === true ? '✅' : o.ok === false ? '❌' : '•'}</span>
+                <span className={o.ok === true ? 'text-green-300' : o.ok === false ? 'text-red-300' : 'text-slate-300'}>{o.message}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {a.raises?.length > 0 && (
+        <div>
+          <div className="text-xs text-slate-500 mb-1">Raises an error when the input is wrong:</div>
+          <ul className="space-y-0.5">
+            {a.raises.map((e, i) => (
+              <li key={i} className="text-xs font-mono text-orange-300">⚠ {e.type}{e.message ? `: ${e.message}` : ''}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {fn.docstring && fn.docstring.trim() !== a.summary && fn.docstring.length > (a.summary || '').length + 20 && (
+        <details className="text-xs text-slate-500">
+          <summary className="cursor-pointer hover:text-slate-300">Show full documentation</summary>
+          <pre className="mt-2 whitespace-pre-wrap font-sans text-slate-400 leading-relaxed">{fn.docstring}</pre>
+        </details>
+      )}
+    </div>
+  )
+}
+
+// Only list functions that were checked and run fine with the pre-filled values
+const works = (f) => f.runnable !== false && f.works !== false
+
+// How a suggested value appears in the box (text without quotes)
+const showValue = (p, json) => {
+  try { const v = JSON.parse(json); if (p.type === 'string' && typeof v === 'string') return v } catch {}
+  return json
+}
+
+// Make blank-looking values visible in the list
+const VISIBLE = { '': '(empty text)', ' ': '(space)', '\n': '(new line)', '\t': '(tab)' }
+const visible = (text) => VISIBLE[text] ?? text
+
+// Input box with a ▾ list of values to choose from — you can also type your own
+function ValueBox({ p, value, onChange }) {
+  const [open, setOpen] = useState(false)
+  const boxRef = useRef(null)
+  // close the list when clicking anywhere outside it
+  useEffect(() => {
+    if (!open) return
+    const close = (e) => { if (boxRef.current && !boxRef.current.contains(e.target)) setOpen(false) }
+    document.addEventListener('mousedown', close)
+    return () => document.removeEventListener('mousedown', close)
+  }, [open])
+  if (p.typeable === false) {
+    return (
+      <input disabled value=""
+        placeholder="Python object — can't be typed here, leave empty"
+        className="input font-mono text-xs opacity-50 cursor-not-allowed" />
+    )
+  }
+  const options = p.suggestions || []
+  return (
+    <div ref={boxRef} className="relative flex-1"
+      onKeyDown={e => e.key === 'Escape' && setOpen(false)}>
+      <input
+        value={value || ''}
+        onChange={e => onChange(e.target.value)}
+        onFocus={() => !value && options.length && setOpen(true)}
+        onBlur={() => setTimeout(() => setOpen(false), 150)}
+        placeholder={exampleText(p) !== '' ? `e.g. ${visible(exampleText(p))}` : `value for ${p.name}`}
+        className={`input font-mono text-xs ${options.length ? 'pr-24' : ''}`}
+      />
+      {options.length > 0 && (
+        <button type="button" title="Show options"
+          onMouseDown={e => { e.preventDefault(); setOpen(o => !o) }}
+          className="absolute right-1 top-1/2 -translate-y-1/2 px-2 py-1 rounded-md text-xs text-slate-300 bg-slate-800 hover:bg-primary/30 hover:text-white border border-border">
+          options ▾
+        </button>
+      )}
+      {open && options.length > 0 && (
+        <div className="absolute z-20 left-0 right-0 mt-1 bg-card border border-border rounded-lg shadow-xl max-h-60 overflow-auto">
+          <div className="px-3 py-1.5 text-[11px] text-slate-500 border-b border-border">Choose a value, or type your own</div>
+          {options.map(o => (
+            <button key={o.value} type="button"
+              onMouseDown={e => { e.preventDefault(); onChange(showValue(p, o.value)); setOpen(false) }}
+              className="w-full text-left px-3 py-1.5 hover:bg-slate-800 flex items-center justify-between gap-3">
+              <span className="font-mono text-xs text-slate-200 truncate">
+                {visible(showValue(p, o.value))}
+              </span>
+              {o.note && <span className="text-[11px] text-slate-500 shrink-0">{o.note}</span>}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
 
 export default function FunctionRunner() {
   const [projects, setProjects]   = useState([])
@@ -48,15 +207,15 @@ export default function FunctionRunner() {
     const fn = functions.find(f => f.name === e.target.value)
     setSel(s => ({ ...s, fn: e.target.value }))
     setFnInfo(fn)
-    setArgs(fn ? fn.args.map(() => '') : [])
+    setArgs(fn ? fn.params.map(p => (p.typeable !== false && (p.required || p.source === 'library tests' || p.source === 'sample file') ? exampleText(p) : '')) : [])
     setResult(null)
   }
 
   const run = async () => {
     setLoading(true); setResult(null)
     try {
-      const parsed = args.map(a => { try { return JSON.parse(a) } catch { return a } })
-      const r = await runFunction(sel.project, sel.file, sel.fn, parsed)
+      const { args: parsed, kwargs } = buildCall(fnInfo?.params || [], args)
+      const r = await runFunction(sel.project, sel.file, sel.fn, parsed, kwargs)
       setResult(r.data)
       setHistory(h => [{ fn: sel.fn, args: parsed, result: r.data, time: new Date().toLocaleTimeString() }, ...h.slice(0, 9)])
     } catch (e) {
@@ -75,7 +234,9 @@ export default function FunctionRunner() {
     const fn = fns.find(f => f.name === ex.fn)
     setFnInfo(fn)
     const hintArgs = JSON.parse(`[${ex.hint}]`)
-    setArgs(fn ? fn.args.map((_, i) => JSON.stringify(hintArgs[i] ?? '')) : [])
+    setArgs(fn ? fn.params.map((p, i) => i < hintArgs.length
+      ? (p.type === 'string' && typeof hintArgs[i] === 'string' ? hintArgs[i] : JSON.stringify(hintArgs[i]))
+      : (p.required ? exampleText(p) : '')) : [])
     setResult(null)
   }
 
@@ -83,7 +244,7 @@ export default function FunctionRunner() {
     <div>
       <div className="mb-4">
         <h2 className="text-lg font-bold text-white">▶ Function Runner</h2>
-        <p className="text-xs text-slate-400 mt-0.5">Select any function from your 557 functions and run it with real inputs</p>
+        <p className="text-xs text-slate-400 mt-0.5">Select a function — the boxes are filled with example inputs, just press Run</p>
       </div>
 
       <div className="grid md:grid-cols-3 gap-4">
@@ -111,8 +272,17 @@ export default function FunctionRunner() {
                 <label className="text-xs text-slate-500 mb-1 block">Function</label>
                 <select value={sel.fn} onChange={onFn} className="select">
                   <option value="">Choose...</option>
-                  {functions.map(f => <option key={f.name} value={f.name}>{f.name}()</option>)}
+                  {functions.filter(works).map(f => <option key={f.name} value={f.name}>{f.name}()</option>)}
                 </select>
+                {sel.file && functions.length > 0 && (
+                  <div className="text-xs text-slate-500 mt-1">
+                    {functions.filter(works).length === 0
+                      ? 'No function in this file can run on its own — pick another file'
+                      : `${functions.filter(works).length} working function${functions.filter(works).length === 1 ? '' : 's'}`
+                        + (functions.length > functions.filter(works).length
+                          ? ` (${functions.length - functions.filter(works).length} hidden: need a real app, object or setup)` : '')}
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -122,19 +292,21 @@ export default function FunctionRunner() {
             <div className="card space-y-3">
               <div>
                 <div className="text-sm font-mono text-primary font-bold">{fnInfo.name}({fnInfo.args.join(', ')})</div>
-                {fnInfo.docstring && <div className="text-xs text-slate-400 mt-1 italic">{fnInfo.docstring}</div>}
+                <About fn={fnInfo} />
               </div>
               <div className="space-y-2">
-                <label className="text-xs text-slate-500 uppercase tracking-wider">Arguments — JSON format</label>
-                {fnInfo.args.map((arg, i) => (
-                  <div key={arg} className="flex items-center gap-3">
-                    <span className="text-xs font-mono text-yellow-400 w-28 shrink-0">{arg}:</span>
-                    <input
-                      value={args[i] || ''}
-                      onChange={e => { const a = [...args]; a[i] = e.target.value; setArgs(a) }}
-                      placeholder={`value for ${arg}`}
-                      className="input font-mono text-xs"
-                    />
+                <label className="text-xs text-slate-500 uppercase tracking-wider">Arguments</label>
+                {fnInfo.params.length === 0 && (
+                  <div className="text-xs text-slate-500">This function needs no input — just press Run.</div>
+                )}
+                {fnInfo.params.map((p, i) => (
+                  <div key={p.name}>
+                    <div className="flex items-center gap-3">
+                      <span className="text-xs font-mono text-yellow-400 w-28 shrink-0 truncate" title={p.name}>{p.name}:</span>
+                      <ValueBox p={p} value={args[i]}
+                        onChange={v => setArgs(a => { const n = [...a]; n[i] = v; return n })} />
+                    </div>
+                    <div className="text-xs text-slate-500 mt-1 ml-[124px]">{hintFor(p)}</div>
                   </div>
                 ))}
               </div>
@@ -157,6 +329,12 @@ export default function FunctionRunner() {
               }`}>
                 {result.success ? JSON.stringify(result.result, null, 2) : result.error}
               </pre>
+              {result.output && (
+                <div className="mt-3">
+                  <div className="text-xs text-slate-500 mb-1">Printed output</div>
+                  <pre className="text-sm font-mono p-3 rounded-lg bg-slate-900/60 text-slate-200 whitespace-pre-wrap">{result.output}</pre>
+                </div>
+              )}
             </div>
           )}
 

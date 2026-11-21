@@ -6,15 +6,13 @@ import { getStats } from './api'
 import Dashboard     from './pages/Dashboard.jsx'
 import ProjectBrowser from './pages/ProjectBrowser.jsx'
 import FunctionRunner from './pages/FunctionRunner.jsx'
-import ASTAnalyzer   from './pages/ASTAnalyzer.jsx'
-import MutationTester from './pages/MutationTester.jsx'
+import Stage1        from './pages/Stage1.jsx'
 
 const NAV = [
   { to: '/',          label: 'Dashboard',       icon: '📊' },
   { to: '/projects',  label: 'Projects',         icon: '📁' },
   { to: '/runner',    label: 'Run Functions',    icon: '▶' },
-  { to: '/ast',       label: 'AST Analyzer',     icon: '🌳' },
-  { to: '/mutation',  label: 'Mutation Tester',  icon: '☣' },
+  { to: '/stage1',    label: 'Stage 1: Test Generation', icon: '🤖' },
 ]
 
 function Layout({ stats, connected }) {
@@ -87,8 +85,7 @@ function Layout({ stats, connected }) {
           <Route path="/"          element={<Dashboard stats={stats} />} />
           <Route path="/projects"  element={<ProjectBrowser />} />
           <Route path="/runner"    element={<FunctionRunner />} />
-          <Route path="/ast"       element={<ASTAnalyzer />} />
-          <Route path="/mutation"  element={<MutationTester />} />
+          <Route path="/stage1"    element={<Stage1 />} />
         </Routes>
       </main>
     </div>
