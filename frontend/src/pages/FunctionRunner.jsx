@@ -58,7 +58,7 @@ function About({ fn }) {
   const okCount = (a.outcomes || []).filter(o => o.ok === true).length
   return (
     <div className="mt-3 rounded-lg border border-border bg-slate-900/40 p-3 space-y-2">
-      <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider">What it does</div>
+      <div className="text-xs font-semibold text-slate-400">What it does</div>
       <p className="text-sm text-slate-200 leading-relaxed">
         {a.summary || 'No description available for this function.'}
       </p>
@@ -73,7 +73,7 @@ function About({ fn }) {
           <ul className="space-y-0.5">
             {a.outcomes.map((o, i) => (
               <li key={i} className="text-xs font-mono flex gap-2">
-                <span>{o.ok === true ? '✅' : o.ok === false ? '❌' : '•'}</span>
+                <span className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${o.ok === true ? 'bg-green-500' : o.ok === false ? 'bg-red-500' : 'bg-slate-500'}`} />
                 <span className={o.ok === true ? 'text-green-300' : o.ok === false ? 'text-red-300' : 'text-slate-300'}>{o.message}</span>
               </li>
             ))}
@@ -85,7 +85,7 @@ function About({ fn }) {
           <div className="text-xs text-slate-500 mb-1">Raises an error when the input is wrong:</div>
           <ul className="space-y-0.5">
             {a.raises.map((e, i) => (
-              <li key={i} className="text-xs font-mono text-orange-300">⚠ {e.type}{e.message ? `: ${e.message}` : ''}</li>
+              <li key={i} className="text-xs font-mono text-orange-300">{e.type}{e.message ? `: ${e.message}` : ''}</li>
             ))}
           </ul>
         </div>
@@ -243,7 +243,7 @@ export default function FunctionRunner() {
   return (
     <div>
       <div className="mb-4">
-        <h2 className="text-lg font-bold text-white">▶ Function Runner</h2>
+        <h2 className="text-lg font-semibold text-white">Run Functions</h2>
         <p className="text-xs text-slate-400 mt-0.5">Select a function — the boxes are filled with example inputs, just press Run</p>
       </div>
 
@@ -295,7 +295,7 @@ export default function FunctionRunner() {
                 <About fn={fnInfo} />
               </div>
               <div className="space-y-2">
-                <label className="text-xs text-slate-500 uppercase tracking-wider">Arguments</label>
+                <label className="text-xs text-slate-500">Arguments</label>
                 {fnInfo.params.length === 0 && (
                   <div className="text-xs text-slate-500">This function needs no input — just press Run.</div>
                 )}
@@ -311,7 +311,7 @@ export default function FunctionRunner() {
                 ))}
               </div>
               <button onClick={run} disabled={loading} className="btn-primary w-full">
-                {loading ? '⏳ Running...' : '▶ Run Function'}
+                {loading ? 'Running…' : 'Run function'}
               </button>
             </div>
           )}
@@ -320,7 +320,7 @@ export default function FunctionRunner() {
           {result && (
             <div className={`card border ${result.success ? 'border-green-700/50' : 'border-red-700/50'}`}>
               <div className="flex items-center gap-2 mb-2">
-                <span>{result.success ? '✅' : '❌'}</span>
+                <span className={`w-2 h-2 rounded-full ${result.success ? 'bg-green-500' : 'bg-red-500'}`} />
                 <span className="text-sm font-semibold">{result.success ? 'Result' : 'Error'}</span>
                 {result.type && <span className="text-xs text-slate-500 font-mono">({result.type})</span>}
               </div>
@@ -340,7 +340,7 @@ export default function FunctionRunner() {
 
           {/* Quick examples */}
           <div className="card">
-            <h3 className="text-xs text-slate-400 uppercase tracking-wider mb-3">Quick Examples — Click to Load</h3>
+            <h3 className="text-xs text-slate-400 mb-3">Quick Examples — Click to Load</h3>
             <div className="grid grid-cols-2 gap-2">
               {EXAMPLES.map(ex => (
                 <button key={ex.label} onClick={() => loadExample(ex)}
@@ -356,7 +356,7 @@ export default function FunctionRunner() {
         {/* History */}
         <div className="card p-0 overflow-auto flex flex-col">
           <div className="px-4 py-3 border-b border-border shrink-0">
-            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Run History</span>
+            <span className="text-xs font-semibold text-slate-400">Run History</span>
           </div>
           <div className="p-2 space-y-2 overflow-auto flex-1">
             {history.length === 0 && (
@@ -370,7 +370,7 @@ export default function FunctionRunner() {
                   <span className="text-xs text-slate-600">{h.time}</span>
                 </div>
                 <div className="text-xs text-slate-400 truncate">
-                  → {h.result.success ? JSON.stringify(h.result.result) : '❌ ' + h.result.error}
+                  → {h.result.success ? JSON.stringify(h.result.result) : 'Error: ' + h.result.error}
                 </div>
               </div>
             ))}

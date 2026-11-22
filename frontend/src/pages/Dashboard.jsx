@@ -1,10 +1,10 @@
 import React from 'react'
 
 const STAGES = [
-  { n: '01', title: 'AI Test Generation',      desc: 'ChatGPT, Claude and Gemini generate unit tests for your Python functions with the same standard prompt.', icon: '🤖', color: 'text-blue-400',   border: 'border-blue-800/50' },
-  { n: '02', title: 'AST Redundancy Detection', desc: 'Parse tests into AST trees, compare execution paths, remove semantic duplicates.', icon: '🌳', color: 'text-green-400',  border: 'border-green-800/50' },
-  { n: '03', title: 'Mutation Validation',      desc: 'Inject fake bugs, check which surviving tests catch them, remove weak tests.', icon: '☣',  color: 'text-yellow-400', border: 'border-yellow-800/50' },
-  { n: '04', title: 'Final Suite Selection',    desc: 'Output a smaller, stronger test suite with preserved fault-detection capability.', icon: '✅', color: 'text-purple-400', border: 'border-purple-800/50' },
+  { n: '1', title: 'AI Test Generation',       desc: 'ChatGPT, Claude and Gemini generate unit tests for your Python functions with the same standard prompt.' },
+  { n: '2', title: 'AST Redundancy Detection', desc: 'Parse tests into AST trees, compare execution paths, remove semantic duplicates.' },
+  { n: '3', title: 'Mutation Validation',      desc: 'Inject fake bugs, check which surviving tests catch them, remove weak tests.' },
+  { n: '4', title: 'Final Suite Selection',    desc: 'Output a smaller, stronger test suite with preserved fault-detection capability.' },
 ]
 
 const PAPERS = [
@@ -14,43 +14,41 @@ const PAPERS = [
   { name: 'MutGen 2025',   desc: 'arXiv — Fault Detection in LLM-Based Test Generation',      url: 'https://arxiv.org/pdf/2506.02954' },
 ]
 
+const SectionTitle = ({ children }) => (
+  <h3 className="text-sm font-semibold text-white mb-3">{children}</h3>
+)
+
 export default function Dashboard({ stats }) {
   return (
-    <div className="space-y-6">
+    <div className="space-y-10">
 
-      {/* Hero */}
-      <div className="bg-gradient-to-br from-indigo-950 to-slate-900 border border-indigo-800/40 rounded-2xl p-6">
-        <div className="badge-blue inline-block mb-3">MSc Thesis — 2026/2027</div>
-        <h2 className="text-2xl font-bold text-white mb-2 leading-snug">
-          Semantic Redundancy Pruning &<br />Targeted Mutation Validation
+      {/* Intro */}
+      <div className="max-w-3xl">
+        <div className="text-xs font-medium text-primary mb-2">MSc Thesis · 2026/2027</div>
+        <h2 className="text-2xl font-semibold text-white leading-snug">
+          Semantic Redundancy Pruning & Targeted Mutation Validation
         </h2>
-        <p className="text-slate-300 text-sm max-w-2xl leading-relaxed">
+        <p className="text-slate-400 text-sm mt-3 leading-relaxed">
           An automated framework that evaluates and optimises AI-generated unit test suites
           by combining AST-based semantic execution-path analysis with selective mutation testing —
           deployed as an inline CI/CD auditing tool.
         </p>
-        <div className="mt-4 flex flex-wrap gap-2 text-xs text-slate-400">
-          <span>👩‍🎓 Mahnaz Ameer</span>
-          <span>·</span>
-          <span>🏛 University of Dhaka — CSE</span>
-          <span>·</span>
-          <span>🎯 Novel Research Contribution</span>
-        </div>
+        <p className="mt-3 text-xs text-slate-500">
+          Mahnaz Ameer · University of Dhaka — CSE
+        </p>
       </div>
 
       {/* Stats */}
       {stats && (
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div className="grid grid-cols-3 gap-3 max-w-2xl">
           {[
-            { label: 'Projects',    value: stats.total_projects,  icon: '📁', c: 'text-blue-400' },
-            { label: 'Python Files', value: stats.total_files,    icon: '📄', c: 'text-green-400' },
-            { label: 'Functions',   value: stats.total_functions, icon: '⚡', c: 'text-yellow-400' },
-            { label: 'Research Gap', value: 'Novel',              icon: '🎯', c: 'text-purple-400' },
-          ].map((s, i) => (
-            <div key={i} className="card text-center">
-              <div className="text-2xl mb-1">{s.icon}</div>
-              <div className={`text-3xl font-bold ${s.c}`}>{s.value}</div>
-              <div className="text-xs text-slate-400 mt-1">{s.label}</div>
+            { label: 'Projects',     value: stats.total_projects },
+            { label: 'Python files', value: stats.total_files },
+            { label: 'Functions',    value: stats.total_functions.toLocaleString() },
+          ].map(s => (
+            <div key={s.label} className="card">
+              <div className="text-2xl font-semibold text-white tabular-nums">{s.value}</div>
+              <div className="text-xs text-slate-500 mt-1">{s.label}</div>
             </div>
           ))}
         </div>
@@ -58,20 +56,15 @@ export default function Dashboard({ stats }) {
 
       {/* Framework stages */}
       <div>
-        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">
-          Research Framework
-        </h3>
+        <SectionTitle>Research framework</SectionTitle>
         <div className="grid sm:grid-cols-2 gap-3">
           {STAGES.map(s => (
-            <div key={s.n} className={`card border ${s.border} flex gap-4`}>
-              <div>
-                <div className="text-2xl">{s.icon}</div>
+            <div key={s.n} className="card flex gap-4">
+              <div className="w-7 h-7 shrink-0 rounded-full border border-border grid place-items-center text-xs font-semibold text-slate-300">
+                {s.n}
               </div>
               <div>
-                <div className="flex items-baseline gap-2 mb-1">
-                  <span className="text-xs font-mono text-slate-500">Stage {s.n}</span>
-                  <span className={`text-sm font-semibold ${s.color}`}>{s.title}</span>
-                </div>
+                <div className="text-sm font-medium text-white mb-1">{s.title}</div>
                 <p className="text-xs text-slate-400 leading-relaxed">{s.desc}</p>
               </div>
             </div>
@@ -82,32 +75,30 @@ export default function Dashboard({ stats }) {
       {/* Projects table */}
       {stats && (
         <div>
-          <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">
-            Evaluation Projects
-          </h3>
+          <SectionTitle>Evaluation projects</SectionTitle>
           <div className="card p-0 overflow-hidden">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-border bg-slate-800/40">
-                  <th className="px-4 py-3 text-left text-xs text-slate-500 font-medium">#</th>
+                <tr className="border-b border-border">
                   <th className="px-4 py-3 text-left text-xs text-slate-500 font-medium">Project</th>
+                  <th className="px-4 py-3 text-left text-xs text-slate-500 font-medium">Type</th>
                   <th className="px-4 py-3 text-right text-xs text-slate-500 font-medium">Files</th>
                   <th className="px-4 py-3 text-right text-xs text-slate-500 font-medium">Functions</th>
                 </tr>
               </thead>
               <tbody>
-                {stats.projects.map((p, i) => (
-                  <tr key={p.id} className="border-b border-border/40 hover:bg-slate-800/20 transition-colors">
-                    <td className="px-4 py-3 text-xs font-mono text-slate-600">{String(i+1).padStart(2,'0')}</td>
-                    <td className="px-4 py-3 font-medium text-slate-200">{p.name}</td>
-                    <td className="px-4 py-3 text-right text-slate-400 tabular-nums">{p.files}</td>
-                    <td className="px-4 py-3 text-right font-bold text-primary tabular-nums">{p.functions}</td>
+                {stats.projects.map(p => (
+                  <tr key={p.id} className="border-b border-border last:border-0 hover:bg-slate-800 transition-colors">
+                    <td className="px-4 py-2.5 text-slate-200">{p.name}</td>
+                    <td className="px-4 py-2.5 text-xs text-slate-500">{p.kind === 'library' ? 'Open-source library' : 'Domain project'}</td>
+                    <td className="px-4 py-2.5 text-right text-slate-400 tabular-nums">{p.files}</td>
+                    <td className="px-4 py-2.5 text-right text-slate-200 tabular-nums">{p.functions.toLocaleString()}</td>
                   </tr>
                 ))}
-                <tr className="bg-slate-800/30">
-                  <td colSpan={2} className="px-4 py-3 font-bold text-white text-sm">Total</td>
-                  <td className="px-4 py-3 text-right font-bold text-white tabular-nums">{stats.total_files}</td>
-                  <td className="px-4 py-3 text-right font-bold text-primary tabular-nums">{stats.total_functions}</td>
+                <tr className="border-t border-border">
+                  <td colSpan={2} className="px-4 py-3 font-medium text-white">Total</td>
+                  <td className="px-4 py-3 text-right font-medium text-white tabular-nums">{stats.total_files}</td>
+                  <td className="px-4 py-3 text-right font-medium text-white tabular-nums">{stats.total_functions.toLocaleString()}</td>
                 </tr>
               </tbody>
             </table>
@@ -117,16 +108,14 @@ export default function Dashboard({ stats }) {
 
       {/* Related papers */}
       <div>
-        <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-3">
-          Related Papers
-        </h3>
+        <SectionTitle>Related papers</SectionTitle>
         <div className="grid sm:grid-cols-2 gap-3">
           {PAPERS.map(p => (
             <a key={p.name} href={p.url} target="_blank" rel="noreferrer"
-               className="card hover:border-primary/50 transition-colors block">
-              <div className="font-semibold text-sm text-primary mb-0.5">{p.name}</div>
-              <div className="text-xs text-slate-400">{p.desc}</div>
-              <div className="text-xs text-slate-600 mt-1 font-mono truncate">↗ {p.url}</div>
+               className="card hover:border-primary transition-colors block">
+              <div className="text-sm font-medium text-white">{p.name}</div>
+              <div className="text-xs text-slate-400 mt-0.5">{p.desc}</div>
+              <div className="text-xs text-slate-500 mt-2 font-mono truncate">{p.url}</div>
             </a>
           ))}
         </div>

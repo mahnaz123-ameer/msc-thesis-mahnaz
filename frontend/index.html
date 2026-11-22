@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MSc Thesis — AI Test Suite Auditor</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <script>
+      // apply the saved theme before the page paints (no flash); default = the computer's setting
+      try {
+        var t = localStorage.getItem('theme')
+        if (t === 'light' || (!t && window.matchMedia('(prefers-color-scheme: light)').matches))
+          document.documentElement.classList.add('light')
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

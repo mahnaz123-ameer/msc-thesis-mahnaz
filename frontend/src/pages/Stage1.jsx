@@ -20,9 +20,9 @@ function RunResult({ run }) {
   return (
     <div className={`rounded-lg border p-3 ${cls}`}>
       <div className="text-sm font-semibold text-white">
-        {bad ? '❌ The test file could not run'
-          : run.passed === run.total ? `✅ ${run.total} tests — all passed`
-          : `⚠ ${run.total} tests — ${run.passed} passed, ${run.failed} failed${run.errors ? `, ${run.errors} errors` : ''}`}
+        {bad ? 'The test file could not run'
+          : run.passed === run.total ? `${run.total} tests — all passed`
+          : `${run.total} tests — ${run.passed} passed, ${run.failed} failed${run.errors ? `, ${run.errors} errors` : ''}`}
       </div>
       <div className="text-xs text-slate-400 mt-0.5">
         {bad ? 'Usually a wrong import or a syntax error in the AI answer. The output below shows why.'
@@ -68,21 +68,16 @@ function ToolPanel({ item, tool, info, saved, onChange }) {
           <div className="flex flex-wrap gap-2">
             <button disabled={!text.trim() || !!busy} className="btn-primary"
               onClick={() => act('save', () => stage1Save(item.id, tool, text))}>
-              {busy === 'save' ? '⏳ Saving and running tests…' : '💾 Save & run tests'}
+              {busy === 'save' ? 'Saving and running tests…' : 'Save & run tests'}
             </button>
             {info.auto && (
               <button disabled={!!busy} className="btn-secondary"
                 onClick={() => act('gen', () => stage1Generate(item.id, tool))}>
-                {busy === 'gen' ? `⏳ Asking ${info.name}…` : `⚡ Generate with ${info.name} API (${info.model})`}
+                {busy === 'gen' ? `Asking ${info.name}…` : `Generate with ${info.name} API`}
               </button>
             )}
             {saved && <button className="btn-secondary" onClick={() => setEdit(false)}>Cancel</button>}
           </div>
-          {!info.auto && info.key_env && (
-            <div className="text-[11px] text-slate-600">
-              Optional: set <code className="text-slate-400">{info.key_env}</code> before starting the backend to generate automatically.
-            </div>
-          )}
         </>
       ) : (
         <>
@@ -95,15 +90,15 @@ function ToolPanel({ item, tool, info, saved, onChange }) {
             <div className="ml-auto flex gap-2">
               <button className="btn-secondary !py-1 !px-3 text-xs" disabled={!!busy}
                 onClick={() => act('run', () => stage1Run(item.id, tool))}>
-                {busy === 'run' ? '⏳ Running…' : '▶ Run again'}
+                {busy === 'run' ? 'Running…' : 'Run again'}
               </button>
               <button className="btn-secondary !py-1 !px-3 text-xs" onClick={() => { setText(saved.code); setEdit(true) }}>
-                ✏ Replace
+                Replace
               </button>
               <button className="btn-secondary !py-1 !px-3 text-xs text-red-300" disabled={!!busy}
                 onClick={() => window.confirm(`Delete the saved ${info.name} tests for ${item.function}?`) &&
                   act('del', async () => { await stage1Delete(item.id, tool); return { data: null } })}>
-                🗑 Delete
+                Delete
               </button>
             </div>
           </div>
@@ -114,7 +109,7 @@ function ToolPanel({ item, tool, info, saved, onChange }) {
           </details>
         </>
       )}
-      {error && <div className="text-xs text-red-300">⚠ {error}</div>}
+      {error && <div className="text-xs text-red-300">{error}</div>}
     </div>
   )
 }
@@ -165,50 +160,24 @@ export default function Stage1() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h2 className="text-lg font-bold text-white">🤖 Stage 1 — AI Test Generation</h2>
+          <h2 className="text-lg font-semibold text-white">Stage 1 · AI Test Generation</h2>
           <p className="text-xs text-slate-400 mt-0.5">
             The same prompt goes to ChatGPT, Claude and Gemini for every function. Their test files are saved and run here.
           </p>
         </div>
         <div className="flex gap-2">
-          <button onClick={load} className="btn-secondary text-xs">🔄 Refresh</button>
-          <a href={stage1ExportUrl()} className="btn-secondary text-xs">⬇ Download results (CSV)</a>
+          <button onClick={load} className="btn-secondary text-xs">Refresh</button>
+          <a href={stage1ExportUrl()} className="btn-secondary text-xs">Download CSV</a>
         </div>
       </div>
 
       {/* How to */}
       <div className="card">
-        <h3 className="text-sm font-semibold text-slate-300 mb-2">How to finish Stage 1</h3>
-        <div className="grid md:grid-cols-2 gap-4">
-          <div>
-            <div className="text-xs font-semibold text-green-400 mb-1">A. Automatic — all functions (recommended)</div>
-            <ol className="text-xs text-slate-400 space-y-1 list-decimal ml-4">
-              <li>Copy <code className="text-slate-300">backend/.env.example</code> to <code className="text-slate-300">backend/.env</code> and put your API keys in it.</li>
-              <li>In a terminal: <code className="text-slate-300">cd backend && python3 stage1_generate_all.py --tool all</code></li>
-              <li>Leave it running. You can stop it any time and start it again — it continues where it stopped.</li>
-              <li>Press <b className="text-slate-200">Refresh</b> here to watch the dots fill up.</li>
-            </ol>
-            <div className="text-[11px] mt-1 text-slate-500">
-              API keys:{' '}
-              {TOOL_ORDER.map((t, i) => (
-                <span key={t}>
-                  {i > 0 && ' · '}{data.tools[t].name}{' '}
-                  {data.tools[t].auto ? <span className="text-green-400">✓ found</span> : <span className="text-red-300">missing</span>}
-                </span>
-              ))}
-              {' '}(restart the backend after editing .env)
-            </div>
-          </div>
-          <div>
-            <div className="text-xs font-semibold text-slate-300 mb-1">B. By hand — one function at a time</div>
-            <ol className="text-xs text-slate-400 space-y-1 list-decimal ml-4">
-              <li>Pick a function and click <b className="text-slate-200">Copy prompt</b>.</li>
-              <li>Paste it into ChatGPT, Claude and Gemini (a <b>new chat</b> each time).</li>
-              <li>Paste each answer into that tool's tab and click <b className="text-slate-200">Save & run tests</b>.</li>
-            </ol>
-          </div>
-        </div>
-        <div className="text-[11px] text-slate-500 mt-2">Stage 1 is finished when every function has a green or yellow dot for all three tools.</div>
+        <ol className="text-sm text-slate-400 space-y-1.5 list-decimal ml-5">
+          <li>Pick a function from the list and click <span className="text-slate-200 font-medium">Copy prompt</span>.</li>
+          <li>Paste it into ChatGPT, Claude and Gemini — a new chat each time.</li>
+          <li>Paste each answer into that tool's tab and click <span className="text-slate-200 font-medium">Save & run tests</span>.</li>
+        </ol>
       </div>
 
       {/* Progress */}
@@ -310,7 +279,7 @@ export default function Stage1() {
                 <div className="text-xs text-slate-500 font-mono">{item.project_name} / {item.file}</div>
                 {item.summary && <p className="text-sm text-slate-300">{item.summary}</p>}
                 <div className="flex flex-wrap gap-2 items-center">
-                  <button onClick={copyPrompt} className="btn-primary">{copied ? '✅ Copied!' : '📋 Copy prompt'}</button>
+                  <button onClick={copyPrompt} className="btn-primary">{copied ? 'Copied' : 'Copy prompt'}</button>
                   <span className="text-xs text-slate-500">Paste it into each AI tool, in a new chat.</span>
                 </div>
                 <details>

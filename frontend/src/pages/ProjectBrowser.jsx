@@ -51,7 +51,7 @@ export default function ProjectBrowser() {
   return (
     <div>
       <div className="mb-4">
-        <h2 className="text-lg font-bold text-white">📁 Project Browser</h2>
+        <h2 className="text-lg font-semibold text-white">Projects</h2>
         <p className="text-xs text-slate-400 mt-0.5">Browse all 5 research projects, files and functions</p>
       </div>
 
@@ -60,7 +60,7 @@ export default function ProjectBrowser() {
         {/* Projects */}
         <div className="card p-0 overflow-auto flex flex-col">
           <div className="px-4 py-3 border-b border-border shrink-0">
-            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Projects</span>
+            <span className="text-xs font-semibold text-slate-400">Projects</span>
           </div>
           <div className="p-2 space-y-1 overflow-auto flex-1">
             {projects.map(p => (
@@ -80,7 +80,7 @@ export default function ProjectBrowser() {
         {/* Files */}
         <div className="card p-0 overflow-auto flex flex-col">
           <div className="px-4 py-3 border-b border-border shrink-0">
-            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Files</span>
+            <span className="text-xs font-semibold text-slate-400">Files</span>
           </div>
           <div className="p-2 space-y-1 overflow-auto flex-1">
             {selProject?.files?.map(file => (
@@ -102,7 +102,7 @@ export default function ProjectBrowser() {
         {/* Functions */}
         <div className="card p-0 overflow-auto flex flex-col">
           <div className="px-4 py-3 border-b border-border shrink-0 flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Functions</span>
+            <span className="text-xs font-semibold text-slate-400">Functions</span>
             {functions.length > 0 && (
               <span className="badge-blue">{functions.length}</span>
             )}
@@ -129,7 +129,7 @@ export default function ProjectBrowser() {
         {/* Source viewer */}
         <div className="card p-0 overflow-auto flex flex-col">
           <div className="px-4 py-3 border-b border-border shrink-0 flex items-center justify-between">
-            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+            <span className="text-xs font-semibold text-slate-400">
               {selFn ? selFn.name + '()' : 'Source'}
             </span>
             {selFn && (
@@ -140,7 +140,7 @@ export default function ProjectBrowser() {
             {selFn && fnSource ? (
               <>
                 {selFn.docstring && (
-                  <p className="text-xs text-slate-500 italic mb-3 leading-relaxed">{selFn.docstring}</p>
+                  <p className="text-xs text-slate-500 mb-3 leading-relaxed">{selFn.docstring}</p>
                 )}
                 <pre className="text-xs font-mono text-green-300 leading-relaxed">{fnSource}</pre>
               </>

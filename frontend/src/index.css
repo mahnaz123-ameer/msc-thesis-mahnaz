@@ -2,43 +2,111 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Theme colours (R G B) ───────────────────────────────────
+   Dark is the default; <html class="light"> switches to light.
+   Tailwind classes such as text-slate-400 or bg-card read these. */
+:root {
+  color-scheme: dark;
+  --surface: 13 17 23;
+  --card: 22 27 34;
+  --border: 45 51 59;
+  --fg: 240 246 252;
+  --primary: 99 102 241;
+  --primary-dark: 79 70 229;
+
+  --slate-200: 230 237 243;
+  --slate-300: 201 209 217;
+  --slate-400: 145 152 161;
+  --slate-500: 115 123 133;
+  --slate-600: 84 91 100;
+  --slate-700: 48 54 61;
+  --slate-800: 33 38 45;
+  --slate-900: 18 22 28;
+
+  --green-300: 126 231 135;  --green-400: 63 185 80;   --green-500: 46 160 67;
+  --green-700: 35 134 54;    --green-800: 25 85 40;    --green-900: 18 45 26;
+  --red-300: 255 161 152;    --red-400: 248 81 73;     --red-500: 218 54 51;
+  --red-700: 182 35 36;      --red-800: 110 30 32;     --red-900: 60 20 22;
+  --yellow-400: 210 153 34;  --yellow-800: 100 70 10;  --yellow-900: 50 38 10;
+  --blue-400: 88 166 255;    --blue-800: 25 60 120;    --blue-900: 16 34 66;
+  --purple-400: 188 140 255; --purple-800: 80 45 130;
+  --orange-300: 255 166 87;
+  --indigo-300: 165 180 252; --indigo-800: 55 48 163;  --indigo-950: 30 27 75;
+}
+
+html.light {
+  color-scheme: light;
+  --surface: 246 247 249;
+  --card: 255 255 255;
+  --border: 222 226 231;
+  --fg: 17 24 39;
+  --primary: 79 70 229;
+  --primary-dark: 67 56 202;
+
+  --slate-200: 31 41 55;
+  --slate-300: 55 65 81;
+  --slate-400: 82 91 104;
+  --slate-500: 107 114 128;
+  --slate-600: 156 163 175;
+  --slate-700: 225 229 234;
+  --slate-800: 240 242 245;
+  --slate-900: 246 247 249;
+
+  --green-300: 21 128 61;    --green-400: 22 140 66;   --green-500: 34 160 80;
+  --green-700: 134 220 160;  --green-800: 187 236 202; --green-900: 225 247 232;
+  --red-300: 185 28 28;      --red-400: 200 35 35;     --red-500: 220 50 50;
+  --red-700: 248 160 160;    --red-800: 252 205 205;   --red-900: 254 232 232;
+  --yellow-400: 161 98 7;    --yellow-800: 245 215 130;--yellow-900: 254 246 205;
+  --blue-400: 29 95 210;     --blue-800: 191 215 252;  --blue-900: 228 238 254;
+  --purple-400: 120 40 200;  --purple-800: 225 205 252;
+  --orange-300: 180 70 10;
+  --indigo-300: 67 56 202;   --indigo-800: 199 210 254;--indigo-950: 238 242 255;
+}
+
 @layer base {
   * { box-sizing: border-box; }
   body {
     font-family: 'Inter', system-ui, sans-serif;
-    background-color: #0f172a;
-    color: #e2e8f0;
+    background-color: rgb(var(--surface));
+    color: rgb(var(--slate-200));
     margin: 0;
+    -webkit-font-smoothing: antialiased;
   }
-  ::-webkit-scrollbar { width: 5px; height: 5px; }
-  ::-webkit-scrollbar-track { background: #1e293b; }
-  ::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgb(var(--slate-700)); border-radius: 8px; border: 2px solid rgb(var(--surface)); }
+  ::selection { background: rgb(var(--primary) / 0.25); }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-primary hover:bg-primary-dark text-white font-semibold py-2 px-4 rounded-lg transition-colors text-sm disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply bg-primary hover:bg-primary-dark font-medium py-2 px-4 rounded-lg transition-colors text-sm
+           disabled:opacity-50 disabled:cursor-not-allowed;
+    color: #fff;
   }
   .btn-secondary {
-    @apply bg-card hover:bg-slate-700 text-slate-200 font-medium py-2 px-4 rounded-lg transition-colors text-sm border border-border;
+    @apply bg-card hover:bg-slate-800 text-slate-300 font-medium py-2 px-4 rounded-lg transition-colors text-sm border border-border
+           disabled:opacity-50 disabled:cursor-not-allowed;
   }
   .input {
-    @apply bg-surface border border-border rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-primary w-full;
+    @apply bg-surface border border-border rounded-lg px-3 py-2 text-sm text-slate-200 placeholder:text-slate-500
+           focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/15 w-full transition-colors;
   }
   .select {
-    @apply bg-surface border border-border rounded-lg px-3 py-2 text-sm text-slate-200 focus:outline-none focus:border-primary w-full;
+    @apply bg-surface border border-border rounded-lg px-3 py-2 text-sm text-slate-200
+           focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/15 w-full transition-colors;
   }
   .card {
-    @apply bg-card border border-border rounded-xl p-4;
+    @apply bg-card border border-border rounded-xl p-5;
   }
-  .badge-green { @apply text-xs bg-green-900/40 text-green-400 border border-green-800/50 px-2 py-0.5 rounded-full; }
-  .badge-red   { @apply text-xs bg-red-900/40 text-red-400 border border-red-800/50 px-2 py-0.5 rounded-full; }
-  .badge-blue  { @apply text-xs bg-blue-900/40 text-blue-400 border border-blue-800/50 px-2 py-0.5 rounded-full; }
-  .badge-yellow{ @apply text-xs bg-yellow-900/40 text-yellow-400 border border-yellow-800/50 px-2 py-0.5 rounded-full; }
-}
+  html.light .card { box-shadow: 0 1px 2px rgb(16 24 40 / 0.04); }
 
-/* AST tree styles */
-.ast-tree ul { padding-left: 18px; border-left: 1px solid #334155; margin-left: 6px; }
-.ast-tree li { list-style: none; padding: 2px 0; }
-.ast-node { display: inline-flex; align-items: center; gap: 4px; padding: 1px 7px; border-radius: 4px; font-size: 11px; font-family: 'JetBrains Mono', monospace; border-width: 1px; border-style: solid; cursor: pointer; transition: opacity .15s; }
-.ast-node:hover { opacity: 0.75; }
+  /* quiet status labels */
+  .badge-green, .badge-red, .badge-blue, .badge-yellow {
+    @apply text-[11px] font-medium px-2 py-0.5 rounded-md;
+  }
+  .badge-green  { @apply bg-green-900 text-green-300; }
+  .badge-red    { @apply bg-red-900 text-red-300; }
+  .badge-blue   { @apply bg-blue-900 text-blue-400; }
+  .badge-yellow { @apply bg-yellow-900 text-yellow-400; }
+}
